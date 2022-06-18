@@ -11,16 +11,16 @@ class RedirectAuthenticatedUsersController extends Controller
     public function home()
     {
         if (auth()->user()->role_id == Role::IS_ADMIN) {
-            return redirect('/admin/tes');
+            return to_route('admin.dashboard');
         }
         if (auth()->user()->role_id == Role::IS_PIMPINAN) {
-            return redirect('/pimpinan/tes');
+            return to_route('pimpinan.dashboard');
         }
         if (auth()->user()->role_id == Role::IS_OPERATOR) {
-            return redirect('/operator/tes');
+            return to_route('operator.dashboard');
         }
         if (auth()->user()->role_id == Role::IS_ANGGOTA) {
-            return redirect('/anggota/tes');
+            return to_route('anggota.dashboard');
         }
         return auth()->logout();
     }
