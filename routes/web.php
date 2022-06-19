@@ -24,7 +24,7 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 Route::group(['middleware' => 'auth'], function(){
-    Route::get('redirectAuthenticatedUsers', [RedirectAuthenticatedUsersController::class, "home"]);
+    Route::get('redirectAuthenticatedUsers', RedirectAuthenticatedUsersController::class);
 
     Route::group(['middleware' => 'role:admin', 'prefix' => 'admin', 'as' => 'admin.'], function(){
         Route::get('dashboard', Admin\DashboardController::class)->name('dashboard');

@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class RedirectAuthenticatedUsersController extends Controller
 {
-    public function home()
+    public function __invoke()
     {
         if (auth()->user()->role_id == Role::IS_ADMIN) {
             return to_route('admin.dashboard');
