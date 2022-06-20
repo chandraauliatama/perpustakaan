@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\{Admin, Pimpinan, Operator, Anggota};
+use App\Http\Controllers\Admin\ManageUserController;
 use App\Http\Controllers\Auth\RedirectAuthenticatedUsersController;
 use Illuminate\Support\Facades\Route;
 
@@ -24,10 +25,11 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 Route::group(['middleware' => 'auth'], function(){
-    Route::get('redirectAuthenticatedUsers', RedirectAuthenticatedUsersController::class);
+    Route::get('redirectAuthenticatedUsers', RedirectAuthenticatedUsersController::class)->name('home');
 
     Route::group(['middleware' => 'role:admin', 'prefix' => 'admin', 'as' => 'admin.'], function(){
         Route::get('dashboard', Admin\DashboardController::class)->name('dashboard');
+        Route::resource('user', ManageUserController::class);
     });
 
     Route::group(['middleware' => 'role:pimpinan', 'prefix' => 'pimpinan', 'as' => 'pimpinan.'], function(){
