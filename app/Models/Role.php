@@ -15,4 +15,8 @@ class Role extends Model
     public const IS_PIMPINAN = 2;
     public const IS_OPERATOR = 3;
     public const IS_ANGGOTA = 4;
+
+    public function users() {
+        return $this->hasMany(User::class);
+    }
 }

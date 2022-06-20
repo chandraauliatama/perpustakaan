@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class ManageUserController extends Controller
@@ -14,7 +15,8 @@ class ManageUserController extends Controller
      */
     public function index()
     {
-        return view('admin.ManageUser.index');
+        $users = User::paginate(10);
+        return view('admin.ManageUser.index', compact('users'));
     }
 
     /**
