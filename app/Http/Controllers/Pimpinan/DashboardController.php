@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Pimpinan;
 
 use App\Http\Controllers\Controller;
+use App\Models\LibraryRules;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -15,6 +16,7 @@ class DashboardController extends Controller
      */
     public function __invoke(Request $request)
     {
-        return view('pimpinan.dashboard');
+        $rules = LibraryRules::first();
+        return view('pimpinan.dashboard', compact('rules'));
     }
 }

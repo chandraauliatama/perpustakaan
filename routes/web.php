@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\{Admin, Pimpinan, Operator, Anggota};
-use App\Http\Controllers\Admin\ManageUserController;
 use App\Http\Controllers\Auth\RedirectAuthenticatedUsersController;
 use Illuminate\Support\Facades\Route;
 
@@ -29,11 +28,17 @@ Route::group(['middleware' => 'auth'], function(){
 
     Route::group(['middleware' => 'role:admin', 'prefix' => 'admin', 'as' => 'admin.'], function(){
         Route::get('dashboard', Admin\DashboardController::class)->name('dashboard');
-        Route::resource('user', ManageUserController::class);
+        Route::resource('user', Admin\ManageUserController::class);
     });
 
     Route::group(['middleware' => 'role:pimpinan', 'prefix' => 'pimpinan', 'as' => 'pimpinan.'], function(){
         Route::get('dashboard', Pimpinan\DashboardController::class)->name('dashboard');
+        Route::controller(Pimpinan\PimpinanController::class)->group(function(){
+            Route::get('books', 'getAllBooks')->name('books');
+            Route::get('borrowedBooks', 'getBorrowedBooks')->name('borrowedBooks');
+            Route::get('lendingRules', 'lendingRules')->name('lendingRules');
+            ROute::post('storeLendingRules', 'storeLendingRules')->name('storeLendingRules');
+        });
     });
 
     Route::group(['middleware' => 'role:operator', 'prefix' => 'operator', 'as' => 'operator.'], function(){

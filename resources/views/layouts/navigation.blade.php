@@ -26,6 +26,15 @@
                         <x-nav-link :href="route('pimpinan.dashboard')" :active="request()->routeIs('pimpinan.dashboard')">
                             {{ __('Dasbor Pimpinan') }}
                         </x-nav-link>
+                        <x-nav-link :href="route('pimpinan.books')" :active="request()->routeIs('pimpinan.books')">
+                            {{ __('Buku Tersedia') }}
+                        </x-nav-link>
+                        <x-nav-link :href="route('pimpinan.borrowedBooks')" :active="request()->routeIs('pimpinan.borrowedBooks')">
+                            {{ __('Buku Dipinjam') }}
+                        </x-nav-link>
+                        <x-nav-link :href="route('pimpinan.lendingRules')" :active="request()->routeIs('pimpinan.lendingRules')">
+                            {{ __('Aturan Peminjaman') }}
+                        </x-nav-link>
                     @endif
                     {{-- Nav Operator --}}
                     @if (auth()->user()->role_id == 3)
@@ -108,6 +117,15 @@
             @if (auth()->user()->role_id == 2)
                 <x-responsive-nav-link :href="route('pimpinan.dashboard')" :active="request()->routeIs('pimpinan.dashboard')">
                     {{ __('Dasbor Pimpinan') }}
+                </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('pimpinan.books')" :active="request()->routeIs('pimpinan.books')">
+                    {{ __('Buku Tersedia') }}
+                </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('pimpinan.borrowedBooks')" :active="request()->routeIs('pimpinan.borrowedBooks')">
+                    {{ __('Buku Dipinjam') }}
+                </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('pimpinan.lendingRules')" :active="request()->routeIs('pimpinan.lendingRules')">
+                    {{ __('Aturan Peminjaman') }}
                 </x-responsive-nav-link>
             @endif
             {{-- Responsive Nav Operator --}}
