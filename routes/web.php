@@ -29,7 +29,7 @@ Route::group(['middleware' => 'auth'], function(){
     Route::group(['middleware' => 'role:admin', 'prefix' => 'admin', 'as' => 'admin.'], function(){
         Route::get('dashboard', Admin\DashboardController::class)->name('dashboard');
         Route::resource('user', Admin\ManageUserController::class);
-        Route::get('printAllUsers', Admin\PrintAllUsersController::class)->name('printAllUsers');
+        Route::get('printAllUsers', [Admin\ManageUserController::class, 'printAllUsers'])->name('printAllUsers');
     });
 
     Route::group(['middleware' => 'role:pimpinan', 'prefix' => 'pimpinan', 'as' => 'pimpinan.'], function(){

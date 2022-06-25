@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Role;
 use App\Models\User;
+use PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules\Password;
@@ -113,5 +114,14 @@ class ManageUserController extends Controller
         $user = User::find($id);
         $user->delete();
         return redirect()->route('admin.user.index')->with('delete', 'Pengguna Berhasil Dihapus!');
+    }
+
+    public function printAllUsers()
+    {
+        // retreive all records from db
+        $users = User::orderBy('role_id')->get();
+        $pdf = PDF::loadView('admin.ManageUser.printAllUsers', compact('users'));
+        // download PDF file with download method
+        return $pdf->stream();
     }
 }
