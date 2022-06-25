@@ -35,6 +35,7 @@ Route::group(['middleware' => 'auth'], function(){
         Route::get('dashboard', Pimpinan\DashboardController::class)->name('dashboard');
         Route::controller(Pimpinan\PimpinanController::class)->group(function(){
             Route::get('books', 'getAllBooks')->name('books');
+            Route::get('printAllBooks', 'printAllBooks')->name('printAllBooks');
             Route::get('borrowedBooks', 'getBorrowedBooks')->name('borrowedBooks');
             Route::get('lendingRules', 'lendingRules')->name('lendingRules');
             ROute::post('storeLendingRules', 'storeLendingRules')->name('storeLendingRules');

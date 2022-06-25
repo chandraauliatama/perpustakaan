@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Pimpinan;
 
 use App\Http\Controllers\Controller;
+use App\Models\Book;
 use App\Models\LibraryRules;
 use Illuminate\Http\Request;
 
@@ -16,7 +17,8 @@ class DashboardController extends Controller
      */
     public function __invoke(Request $request)
     {
+        $totalBooks = Book::sum('stock');
         $rules = LibraryRules::first();
-        return view('pimpinan.dashboard', compact('rules'));
+        return view('pimpinan.dashboard', compact('rules', 'totalBooks'));
     }
 }

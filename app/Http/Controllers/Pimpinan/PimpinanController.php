@@ -3,14 +3,30 @@
 namespace App\Http\Controllers\Pimpinan;
 
 use App\Http\Controllers\Controller;
+use App\Models\Book;
 use App\Models\LibraryRules;
 use Illuminate\Http\Request;
+use PDF;
 
 class PimpinanController extends Controller
 {
     public function getAllBooks()
     {
-        return view('pimpinan.allBooks');
+        $books = Book::orderBy('title');
+        if (request('search')) {
+            $books->where('title', 'like', '%' . request('search') . '%');
+        }
+        $books = $books->paginate(10)->withQueryString();
+        return view('pimpinan.allBooks', compact('books'));
+    }
+
+    public function printAllBooks()
+    {
+          // retreive all records from db
+        $books = Book::all();
+        $pdf = PDF::loadView('pimpinan.printAllBooks', compact('books'));
+        // download PDF file with download method
+        return $pdf->stream();
     }
 
     public function getBorrowedBooks()

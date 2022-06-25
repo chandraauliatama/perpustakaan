@@ -26,7 +26,7 @@
                                     Total Pengguna
                                 </p>
                                 <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
-                                    6389
+                                    {{ $totalUsers }}
                                 </p>
                             </div>
                         </div>
@@ -64,7 +64,7 @@
                                     Total Buku
                                 </p>
                                 <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
-                                    376
+                                    {{ $totalBooks }}
                                 </p>
                             </div>
                         </div>
