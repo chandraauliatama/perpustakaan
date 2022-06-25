@@ -46,10 +46,10 @@ class ManageUserController extends Controller
     public function store(Request $request)
     {
         $user = $request->validate([
-        'name' => 'required|string|min:3|max:255',
-        'email' => "required|email|unique:users",
-        'role_id' => 'required|in:1,2,3,4',
-        'password' => ['required', 'confirmed', Password::defaults()]
+            'name' => 'required|string|min:3|max:255',
+            'email' => "required|email|unique:users",
+            'role_id' => 'required|in:1,2,3,4',
+            'password' => ['required', 'confirmed', Password::defaults()]
         ]);
         User::create($user);
         return redirect()->route('admin.user.index')->with('status', 'Pengguna Berhasil Ditambahkan!');
