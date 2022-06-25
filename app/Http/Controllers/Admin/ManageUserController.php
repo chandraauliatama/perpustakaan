@@ -18,7 +18,11 @@ class ManageUserController extends Controller
      */
     public function index()
     {
-        $users = User::orderBy('role_id')->paginate(10);
+        $users = User::orderBy('role_id');
+        if (request('search')) {
+            $users->where('name', 'like', '%' . request('search') . '%');
+        }
+        $users = $users->paginate(10)->withQueryString();
         return view('admin.ManageUser.index', compact('users'));
     }
 
@@ -48,7 +52,7 @@ class ManageUserController extends Controller
         'password' => ['required', 'confirmed', Password::defaults()]
         ]);
         User::create($user);
-        return redirect()->route('admin.user.index');
+        return redirect()->route('admin.user.index')->with('status', 'Pengguna Berhasil Ditambahkan!');
     }
 
     /**
@@ -95,7 +99,7 @@ class ManageUserController extends Controller
         $user->role_id = $request->role_id;
         !$request->has('reset-password') ?: $user->password = Hash::make('12345678');
         $user->save();
-        return redirect()->route('admin.user.index');
+        return redirect()->route('admin.user.index')->with('status', 'Data Pengguna Berhasil Diubah!');
     }
 
     /**
@@ -108,6 +112,6 @@ class ManageUserController extends Controller
     {
         $user = User::find($id);
         $user->delete();
-        return redirect()->route('admin.user.index');
+        return redirect()->route('admin.user.index')->with('delete', 'Pengguna Berhasil Dihapus!');
     }
 }

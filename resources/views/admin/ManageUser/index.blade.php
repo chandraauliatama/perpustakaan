@@ -12,8 +12,19 @@
                     <form action="{{ route('admin.user.create') }}" method="get">
                         <x-button class="mb-3 font-bold">+ Buat User</x-button>
                     </form>
+                    <form action="{{ route('admin.user.index') }}">
+                        <x-input id="search" class="mt-1 w-1/2" type="text" name="search"
+                            placeholder="Masukan Nama" />
+                        <x-button class="mb-3 font-bold">Cari </x-button>
+                    </form>
                     {{-- Table Template --}}
-                    <div class="w-full overflow-hidden rounded-lg shadow-xs">
+                    @if (session())
+                        <div x-data="{ show: true }" x-show="show" x-init="setTimeout(() => show = false, 2500)">
+                            <div class="text-green-500 font-bold mb-4">{{ session('status') }}</div>
+                            <div class="text-red-500 font-bold mb-4">{{ session('delete') }}</div>
+                        </div>
+                    @endif
+                    <div class="w-full mt-3 overflow-hidden rounded-lg shadow-xs">
                         <div class="w-full overflow-x-auto">
                             <table class="w-full whitespace-no-wrap">
                                 <thead>
