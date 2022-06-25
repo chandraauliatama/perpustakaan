@@ -23,7 +23,7 @@ class PimpinanController extends Controller
     public function printAllBooks()
     {
           // retreive all records from db
-        $books = Book::all();
+        $books = Book::orderBy('title')->get();
         $pdf = PDF::loadView('pimpinan.printAllBooks', compact('books'));
         // download PDF file with download method
         return $pdf->stream();

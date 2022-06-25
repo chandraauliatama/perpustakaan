@@ -9,9 +9,10 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
-                    <form action="{{ route('admin.user.create') }}" method="get">
-                        <x-button class="mb-3 font-bold">+ Buat User</x-button>
-                    </form>
+                    <a href="{{ route('admin.user.create') }}"
+                        class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150">{{ __('+ Buat User') }}</a>
+                    <a href="{{ route('admin.printAllUsers') }}" target="_blank"
+                        class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150">{{ __('Cetak PDF') }}</a>
                     <form action="{{ route('admin.user.index') }}">
                         <x-input id="search" class="mt-1 w-1/2" type="text" name="search"
                             placeholder="Masukan Nama" />
@@ -34,6 +35,7 @@
                                         {{-- <th class="px-4 py-3">Buku Dipinjam</th> --}}
                                         <th class="px-4 py-3">Role</th>
                                         <th class="px-4 py-3">Email</th>
+                                        <th class="px-4 py-3">Terdaftar</th>
                                         <th class="px-4 py-3">Aksi</th>
                                     </tr>
                                 </thead>
@@ -80,6 +82,9 @@
                                             </td>
                                             <td class="px-4 py-3 text-sm">
                                                 {{ $user->email }}
+                                            </td>
+                                            <td class="px-4 py-3 text-sm">
+                                                {{ $user->created_at }}
                                             </td>
                                             <td class="px-4 py-3">
                                                 <div class="flex items-center space-x-4 text-sm">
