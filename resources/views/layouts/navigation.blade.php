@@ -44,11 +44,17 @@
                         <x-nav-link :href="route('operator.book.index')" :active="request()->routeIs('operator.book.index')">
                             {{ __('Kelola Buku') }}
                         </x-nav-link>
+                        <x-nav-link :href="route('operator.book.index')" :active="request()->routeIs('operator.book.index')">
+                            {{ __('Catatan Peminjaman Buku') }}
+                        </x-nav-link>
                     @endif
                     {{-- Nav Anggota --}}
                     @if (auth()->user()->role_id == 4)
                         <x-nav-link :href="route('anggota.dashboard')" :active="request()->routeIs('anggota.dashboard')">
                             {{ __('Dasbor') }}
+                        </x-nav-link>
+                        <x-nav-link :href="route('anggota.booklist')" :active="request()->routeIs('anggota.booklist')">
+                            {{ __('Buku Tersedia') }}
                         </x-nav-link>
                     @endif
                 </div>
@@ -136,8 +142,11 @@
                 <x-responsive-nav-link :href="route('operator.dashboard')" :active="request()->routeIs('operator.dashboard')">
                     {{ __('Dasbor Operator') }}
                 </x-responsive-nav-link>
-                <x-responsive-nav-link :href="route('operator.dashboard')" :active="request()->routeIs('operator.dashboard')">
+                <x-responsive-nav-link :href="route('operator.book.index')" :active="request()->routeIs('operator.book.index')">
                     {{ __('Kelola Buku') }}
+                </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('operator.book.index')" :active="request()->routeIs('operator.book.index')">
+                    {{ __('Catatan Peminjaman Buku') }}
                 </x-responsive-nav-link>
             @endif
             {{-- Responsive Nav Anggota --}}

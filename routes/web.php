@@ -51,6 +51,7 @@ Route::group(['middleware' => 'auth'], function(){
 
     Route::group(['middleware' => 'role:anggota', 'prefix' => 'anggota', 'as' => 'anggota.'], function(){
         Route::get('dashboard', Anggota\DashboardController::class)->name('dashboard');
+        Route::get('booklist', Anggota\BookListController::class)->name('booklist');
     });
 });
 
