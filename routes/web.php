@@ -46,12 +46,14 @@ Route::group(['middleware' => 'auth'], function(){
     Route::group(['middleware' => 'role:operator', 'prefix' => 'operator', 'as' => 'operator.'], function(){
         Route::get('dashboard', Operator\DashboardController::class)->name('dashboard');
         Route::resource('book', Operator\ManageBookController::class);
+        Route::resource('borrowed', Operator\ManageBorrowedBookController::class);
         Route::get('printAllBooks', [Operator\ManageBookController::class,'printAllBooks'])->name('printAllBooks');
     });
 
     Route::group(['middleware' => 'role:anggota', 'prefix' => 'anggota', 'as' => 'anggota.'], function(){
         Route::get('dashboard', Anggota\DashboardController::class)->name('dashboard');
         Route::get('booklist', Anggota\BookListController::class)->name('booklist');
+        Route::post('borrow/{book_id}', Anggota\BorrowBookController::class)->name('borrow');
     });
 });
 

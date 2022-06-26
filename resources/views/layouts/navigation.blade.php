@@ -44,7 +44,7 @@
                         <x-nav-link :href="route('operator.book.index')" :active="request()->routeIs('operator.book.index')">
                             {{ __('Kelola Buku') }}
                         </x-nav-link>
-                        <x-nav-link :href="route('operator.book.index')" :active="request()->routeIs('operator.book.index')">
+                        <x-nav-link :href="route('operator.borrowed.index')" :active="request()->routeIs('operator.borrowed.index')">
                             {{ __('Catatan Peminjaman Buku') }}
                         </x-nav-link>
                     @endif
