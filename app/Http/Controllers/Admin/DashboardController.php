@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Book;
+use App\Models\Pivot\BookUser;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -21,6 +22,7 @@ class DashboardController extends Controller
         $totalUsers = User::count();
         $totalBooks = Book::sum('stock');
         $newUserThisWeek = User::where('created_at', '>', Carbon::now()->startOfWeek()) ->where('created_at', '<', Carbon::now()->endOfWeek()) ->count();
-        return view('admin.dashboard', compact('totalUsers', 'totalBooks', 'newUserThisWeek'));
+        $borrowedBooks = BookUser::where('status', 'ON LOAN')->count();
+        return view('admin.dashboard', compact('totalUsers', 'totalBooks', 'newUserThisWeek', 'borrowedBooks'));
     }
 }

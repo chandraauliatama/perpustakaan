@@ -15,7 +15,7 @@
                         class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150">{{ __('Cetak PDF') }}</a>
                     <form action="{{ route('admin.user.index') }}">
                         <x-input id="search" class="mt-1 w-1/2" type="text" name="search"
-                            placeholder="Masukan Nama" />
+                            placeholder="Masukan Nama" :value="request('search')" />
                         <x-button class="mb-3 font-bold">Cari </x-button>
                     </form>
                     {{-- Table Template --}}
@@ -40,7 +40,7 @@
                                     </tr>
                                 </thead>
                                 <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
-                                    @foreach ($users as $user)
+                                    @forelse ($users as $user)
                                         <tr class="text-gray-700 dark:text-gray-400">
                                             <td class="px-4 py-3">
                                                 <div class="flex items-center text-sm">
@@ -120,7 +120,9 @@
                                                 </div>
                                             </td>
                                         </tr>
-                                    @endforeach
+                                    @empty
+                                        <h1 class="text-red-700 font-bold text-lg"> Data tidak ditemukan</h1>
+                                    @endforelse
                                 </tbody>
                             </table>
                         </div>

@@ -18,7 +18,11 @@ class BookListController extends Controller
     {
         $books = Book::orderBy('title');
         if (request('search')) {
-            $books->where('title', 'like', '%' . request('search') . '%');
+            $books->where('title', 'like', '%' . request('search') . '%')
+                ->Orwhere('author', 'like', '%' . request('search') . '%')
+                ->Orwhere('publisher', 'like', '%' . request('search') . '%')
+                ->Orwhere('stock', request('search'))
+                ->Orwhere('year', request('search'));
         }
         $books = $books->paginate(12)->withQueryString();
         return view('anggota.booklist', compact('books'));

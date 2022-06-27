@@ -19,7 +19,11 @@ class ManageBookController extends Controller
     {
         $books = Book::orderBy('title');
         if (request('search')) {
-            $books->where('title', 'like', '%' . request('search') . '%');
+            $books->where('title', 'like', '%' . request('search') . '%')
+                ->Orwhere('author', 'like', '%' . request('search') . '%')
+                ->Orwhere('publisher', 'like', '%' . request('search') . '%')
+                ->Orwhere('stock', request('search'))
+                ->Orwhere('year', request('search'));
         }
         $books = $books->paginate(10)->withQueryString();
         return view('operator.ManageBook.index', compact('books'));

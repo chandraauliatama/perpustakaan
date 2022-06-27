@@ -154,6 +154,9 @@
                 <x-responsive-nav-link :href="route('anggota.dashboard')" :active="request()->routeIs('anggota.dashboard')">
                     {{ __('Dasbor') }}
                 </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('anggota.booklist')" :active="request()->routeIs('anggota.booklist')">
+                    {{ __('Buku Tersedia') }}
+                </x-responsive-nav-link>
             @endif
         </div>
 

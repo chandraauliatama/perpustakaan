@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Pimpinan;
 use App\Http\Controllers\Controller;
 use App\Models\Book;
 use App\Models\LibraryRules;
+use App\Models\Pivot\BookUser;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -19,6 +20,7 @@ class DashboardController extends Controller
     {
         $totalBooks = Book::sum('stock');
         $rules = LibraryRules::first();
-        return view('pimpinan.dashboard', compact('rules', 'totalBooks'));
+        $borrowedBooks = BookUser::where('status', 'ON LOAN')->count();
+        return view('pimpinan.dashboard', compact('rules', 'totalBooks', 'borrowedBooks'));
     }
 }

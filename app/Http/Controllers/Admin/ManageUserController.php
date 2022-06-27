@@ -21,7 +21,11 @@ class ManageUserController extends Controller
     {
         $users = User::orderBy('role_id');
         if (request('search')) {
-            $users->where('name', 'like', '%' . request('search') . '%');
+            $users->where('name', 'like', '%' . request('search') . '%')
+                ->orWhere('email', 'like', '%' . request('search') . '%')
+                ->orWhereHas('role', function($query){
+                $query->where('name', 'like', '%' . request('search') . '%');
+            });
         }
         $users = $users->paginate(10)->withQueryString();
         return view('admin.ManageUser.index', compact('users'));
