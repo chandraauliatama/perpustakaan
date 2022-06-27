@@ -11,7 +11,7 @@
                 <div class="p-6 bg-white border-b border-gray-200">
                     <form action="{{ route('anggota.booklist') }}" class="mb-4">
                         <x-input id="search" class="mt-1 w-3/4 md:w-1/2" type="text" name="search"
-                            placeholder="Masukan Judul Buku" value="{{ request('search') }}" />
+                            placeholder="Masukan Kata Kunci Pencarian..." value="{{ request('search') }}" />
                         <x-button class="mb-3 font-bold">Cari </x-button>
                     </form>
                     {{-- Status --}}

@@ -8,7 +8,7 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="overflow-hidden sm:rounded-lg">
-                <div class="p-6 border-gray-200">
+                <div class="p-6 grid place-items-center">
                     {{-- Statistik --}}
                     <div class="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4">
                         <!-- Card -->
@@ -34,10 +34,10 @@
                         <div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
                             <div
                                 class="p-3 mr-4 text-green-500 bg-green-100 rounded-full dark:text-green-100 dark:bg-green-500">
-                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd"
-                                        d="M4 4a2 2 0 00-2 2v4a2 2 0 002 2V6h10a2 2 0 00-2-2H4zm2 6a2 2 0 012-2h8a2 2 0 012 2v4a2 2 0 01-2 2H8a2 2 0 01-2-2v-4zm6 4a2 2 0 100-4 2 2 0 000 4z"
-                                        clip-rule="evenodd"></path>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
+                                    fill="currentColor">
+                                    <path
+                                        d="M8 9a3 3 0 100-6 3 3 0 000 6zM8 11a6 6 0 016 6H2a6 6 0 016-6zM16 7a1 1 0 10-2 0v1h-1a1 1 0 100 2h1v1a1 1 0 102 0v-1h1a1 1 0 100-2h-1V7z" />
                                 </svg>
                             </div>
                             <div>
@@ -53,10 +53,10 @@
                         <div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
                             <div
                                 class="p-3 mr-4 text-blue-500 bg-blue-100 rounded-full dark:text-blue-100 dark:bg-blue-500">
-                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
+                                    fill="currentColor">
                                     <path
-                                        d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z">
-                                    </path>
+                                        d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.669 0 3.218.51 4.5 1.385A7.962 7.962 0 0114.5 14c1.255 0 2.443.29 3.5.804v-10A7.968 7.968 0 0014.5 4c-1.255 0-2.443.29-3.5.804V12a1 1 0 11-2 0V4.804z" />
                                 </svg>
                             </div>
                             <div>
@@ -72,10 +72,11 @@
                         <div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
                             <div
                                 class="p-3 mr-4 text-teal-500 bg-teal-100 rounded-full dark:text-teal-100 dark:bg-teal-500">
-                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd"
-                                        d="M18 5v8a2 2 0 01-2 2h-5l-5 4v-4H4a2 2 0 01-2-2V5a2 2 0 012-2h12a2 2 0 012 2zM7 8H5v2h2V8zm2 0h2v2H9V8zm6 0h-2v2h2V8z"
-                                        clip-rule="evenodd"></path>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
+                                    fill="currentColor">
+                                    <path
+                                        d="M5.5 13a3.5 3.5 0 01-.369-6.98 4 4 0 117.753-1.977A4.5 4.5 0 1113.5 13H11V9.413l1.293 1.293a1 1 0 001.414-1.414l-3-3a1 1 0 00-1.414 0l-3 3a1 1 0 001.414 1.414L9 9.414V13H5.5z" />
+                                    <path d="M9 13h2v5a1 1 0 11-2 0v-5z" />
                                 </svg>
                             </div>
                             <div>
@@ -88,6 +89,68 @@
                             </div>
                         </div>
                     </div>
+
+                    {{-- Chart --}}
+                    <div class="w-17 sm:w-1/3 p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
+                        <h4 class="mb-4 font-semibold text-gray-800 dark:text-gray-300 ">
+                            Statistik Pengguna
+                        </h4>
+                        <canvas id="myChart"></canvas>
+                        <div class="flex justify-center mt-4 space-x-3 text-sm text-gray-600 dark:text-gray-400">
+                            <!-- Chart legend -->
+                            <div class="flex items-center">
+                                <span class="inline-block w-3 h-3 mr-1 bg-teal-500 rounded-full"></span>
+                                <span>Admin</span>
+                            </div>
+                            <div class="flex items-center">
+                                <span class="inline-block w-3 h-3 mr-1 bg-blue-600 rounded-full"></span>
+                                <span>Pimpinan</span>
+                            </div>
+                            <div class="flex items-center">
+                                <span class="inline-block w-3 h-3 mr-1 bg-purple-600 rounded-full"></span>
+                                <span>Operator</span>
+                            </div>
+                            <div class="flex items-center">
+                                <span class="inline-block w-3 h-3 mr-1 bg-yellow-400 rounded-full"></span>
+                                <span>Anggota</span>
+                            </div>
+                        </div>
+                    </div>
+                    <script>
+                        /**
+                         * For usage, visit Chart.js docs https://www.chartjs.org/docs/latest/
+                         */
+                        const pieConfig = {
+                            type: 'doughnut',
+                            data: {
+                                datasets: [{
+                                    data: [{{ "$admin, $pimpinan, $operator, $anggota" }}],
+                                    /**
+                                     * These colors come from Tailwind CSS palette
+                                     * https://tailwindcss.com/docs/customizing-colors/#default-color-palette
+                                     */
+                                    backgroundColor: ['#0694a2', '#1c64f2', '#7e3af2', '#FFD700'],
+                                    label: 'Dataset 1',
+                                }, ],
+                                //labels: ['Shoes', 'Shirts', 'Bags'],
+                            },
+                            options: {
+                                responsive: true,
+                                cutoutPercentage: 80,
+                                /**
+                                 * Default legends are ugly and impossible to style.
+                                 * See examples in charts.html to add your own legends
+                                 *  */
+                                legend: {
+                                    display: false,
+                                },
+                            },
+                        }
+
+                        // change this to the id of your chart element in HMTL
+                        const pieCtx = document.getElementById('myChart')
+                        window.myPie = new Chart(pieCtx, pieConfig)
+                    </script>
                 </div>
             </div>
         </div>

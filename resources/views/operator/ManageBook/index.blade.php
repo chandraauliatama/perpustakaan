@@ -18,7 +18,7 @@
                     {{-- Search Form --}}
                     <form action="{{ route('operator.book.index') }}">
                         <x-input id="search" class="mt-1 w-1/2" type="text" name="search"
-                            placeholder="Masukan Judul Buku" value="{{ request('search') }}" />
+                            placeholder="Masukan Kata Kunci Pencarian..." value="{{ request('search') }}" />
                         <x-button class="mb-3 font-bold">Cari </x-button>
                     </form>
 
