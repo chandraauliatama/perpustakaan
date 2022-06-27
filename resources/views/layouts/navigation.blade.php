@@ -56,6 +56,9 @@
                         <x-nav-link :href="route('anggota.booklist')" :active="request()->routeIs('anggota.booklist')">
                             {{ __('Buku Tersedia') }}
                         </x-nav-link>
+                        <x-nav-link :href="route('anggota.borrowedList')" :active="request()->routeIs('anggota.borrowedList')">
+                            {{ __('Catatan Peminjaman') }}
+                        </x-nav-link>
                     @endif
                 </div>
             </div>
