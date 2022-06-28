@@ -137,6 +137,11 @@
                             options: {
                                 responsive: true,
                                 cutoutPercentage: 80,
+                                animation: {
+                                    animateRotate: true,
+                                    loop: true,
+                                    duration: 2700
+                                },
                                 /**
                                  * Default legends are ugly and impossible to style.
                                  * See examples in charts.html to add your own legends
