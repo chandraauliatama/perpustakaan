@@ -43,6 +43,7 @@
                                          <th class="px-4 py-3">Penerbit</th>
                                          <th class="px-4 py-3">Tahun Terbit</th>
                                          <th class="px-4 py-3">Stok</th>
+                                         <th class="px-4 py-3">QRCODE</th>
                                      </tr>
                                  </thead>
                                  <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
@@ -80,6 +81,17 @@
                                              </td>
                                              <td class="px-4 py-3 text-sm">
                                                  {{ $book->stock }}
+                                             </td>
+                                             <td class="px-4 py-3 text-sm">
+                                                 @php
+                                                     $qrcode = base64_encode(
+                                                         \QrCode::format('svg')
+                                                             ->size(200)
+                                                             ->errorCorrection('H')
+                                                             ->generate(str_replace(' ', '+', $book->title)),
+                                                     );
+                                                 @endphp
+                                                 <img src="data:image/png;base64, {!! $qrcode !!}">
                                              </td>
                                          </tr>
                                      @endforeach
