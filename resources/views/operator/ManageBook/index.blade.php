@@ -139,7 +139,7 @@
             </div>
         </div>
     </div>
-    <script>
+    <script type="module">
         function onScanSuccess(decodedText, decodedResult) {
             // handle the scanned code as you like, for example:
             window.location.href = "{{ URL::current() }}?search=" + decodedText;

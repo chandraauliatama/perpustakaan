@@ -16,8 +16,8 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-    <script src="{{ asset('chart.js/chart.js') }}"></script>
-    <script src="{{ asset('html5qrcode.js') }}"></script>
+    {{-- <script src="{{ asset('chart.js/chart.js') }}"></script> --}}
+    {{-- <script src="{{ asset('html5qrcode.js') }}"></script> --}}
 </head>
 
 <body class="font-sans antialiased">

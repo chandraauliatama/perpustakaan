@@ -116,48 +116,49 @@
                             </div>
                         </div>
                     </div>
-                    <script>
-                        /**
-                         * For usage, visit Chart.js docs https://www.chartjs.org/docs/latest/
-                         */
-                        const pieConfig = {
-                            type: 'doughnut',
-                            data: {
-                                datasets: [{
-                                    data: [{{ "$admin, $pimpinan, $operator, $anggota" }}],
-                                    /**
-                                     * These colors come from Tailwind CSS palette
-                                     * https://tailwindcss.com/docs/customizing-colors/#default-color-palette
-                                     */
-                                    backgroundColor: ['#0694a2', '#1c64f2', '#7e3af2', '#FFD700'],
-                                    label: 'Dataset 1',
-                                }, ],
-                                //labels: ['Shoes', 'Shirts', 'Bags'],
-                            },
-                            options: {
-                                responsive: true,
-                                cutoutPercentage: 80,
-                                animation: {
-                                    animateRotate: true,
-                                    loop: true,
-                                    duration: 2700
-                                },
-                                /**
-                                 * Default legends are ugly and impossible to style.
-                                 * See examples in charts.html to add your own legends
-                                 *  */
-                                legend: {
-                                    display: false,
-                                },
-                            },
-                        }
-
-                        // change this to the id of your chart element in HMTL
-                        const pieCtx = document.getElementById('myChart')
-                        window.myPie = new Chart(pieCtx, pieConfig)
-                    </script>
                 </div>
             </div>
         </div>
     </div>
+    {{-- Chart Script --}}
+    <script type="module">
+        /**
+         * For usage, visit Chart.js docs https://www.chartjs.org/docs/latest/
+         */
+        const pieConfig = {
+            type: 'doughnut',
+            data: {
+                datasets: [{
+                    data: [{{ "$admin, $pimpinan, $operator, $anggota" }}],
+                    /**
+                     * These colors come from Tailwind CSS palette
+                     * https://tailwindcss.com/docs/customizing-colors/#default-color-palette
+                     */
+                    backgroundColor: ['#0694a2', '#1c64f2', '#7e3af2', '#FFD700'],
+                    label: 'Dataset 1',
+                }, ],
+                //labels: ['Shoes', 'Shirts', 'Bags'],
+            },
+            options: {
+                responsive: true,
+                cutoutPercentage: 80,
+                animation: {
+                    animateRotate: true,
+                    loop: true,
+                    duration: 2700
+                },
+                /**
+                 * Default legends are ugly and impossible to style.
+                 * See examples in charts.html to add your own legends
+                 *  */
+                legend: {
+                    display: false,
+                },
+            },
+        }
+
+        // change this to the id of your chart element in HMTL
+        const pieCtx = document.getElementById('myChart')
+        window.myPie = new Chart(pieCtx, pieConfig)
+    </script>
 </x-app-layout>
