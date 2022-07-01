@@ -21,6 +21,7 @@ class DashboardController extends Controller
         $borrowedBooks = $allBooks->where('status', 'ON LOAN')->count();
         $requestedBooks = BookUser::where('user_id', auth()->user()->id)->where('status', 'ASK TO BORROW')->count();
         $returnedBooks = BookUser::where('user_id', auth()->user()->id)->where('status', 'RETURNED')->count();
+
         return view('anggota.dashboard', compact('allBook', 'borrowedBooks', 'requestedBooks', 'returnedBooks'));
     }
 }

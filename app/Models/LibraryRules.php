@@ -8,5 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class LibraryRules extends Model
 {
     use HasFactory;
+
     protected $fillable = ['day_limit', 'fine'];
 }

@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\Role;
-use Illuminate\Http\Request;
 
 class RedirectAuthenticatedUsersController extends Controller
 {
@@ -22,6 +21,7 @@ class RedirectAuthenticatedUsersController extends Controller
         if (auth()->user()->role_id == Role::IS_ANGGOTA) {
             return to_route('anggota.dashboard');
         }
+
         return auth()->logout();
     }
 }

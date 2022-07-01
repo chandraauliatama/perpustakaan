@@ -15,19 +15,20 @@ class PimpinanController extends Controller
     {
         $books = Book::orderBy('title');
         if (request('search')) {
-            $books->where('title', 'like', '%' . request('search') . '%')
-                ->Orwhere('author', 'like', '%' . request('search') . '%')
-                ->Orwhere('publisher', 'like', '%' . request('search') . '%')
+            $books->where('title', 'like', '%'.request('search').'%')
+                ->Orwhere('author', 'like', '%'.request('search').'%')
+                ->Orwhere('publisher', 'like', '%'.request('search').'%')
                 ->Orwhere('stock', request('search'))
                 ->Orwhere('year', request('search'));
         }
         $books = $books->paginate(10)->withQueryString();
+
         return view('pimpinan.allBooks', compact('books'));
     }
 
     public function printAllBooks()
     {
-          // retreive all records from db
+        // retreive all records from db
         // $qrcode = base64_encode(\QrCode::format('svg')->size(200)->errorCorrection('H')->generate('string'));
         $books = Book::orderBy('title')->get();
         $pdf = PDF::loadView('pimpinan.printAllBooks', compact('books'));
@@ -39,22 +40,24 @@ class PimpinanController extends Controller
     {
         $borrows = BookUser::orderBy('status');
         if (request('search')) {
-            $borrows->whereHas('book', function($query){
-                $query->where('title', 'like', '%' . request('search') . '%')
-                    ->Orwhere('author', 'like', '%' . request('search') . '%')
-                    ->Orwhere('publisher', 'like', '%' . request('search') . '%')
+            $borrows->whereHas('book', function ($query) {
+                $query->where('title', 'like', '%'.request('search').'%')
+                    ->Orwhere('author', 'like', '%'.request('search').'%')
+                    ->Orwhere('publisher', 'like', '%'.request('search').'%')
                     ->Orwhere('stock', request('search'))
                     ->Orwhere('year', request('search'));
             });
         }
         $borrows = $borrows->paginate(10)->withQueryString();
         $status = BookUser::$statuses;
+
         return view('pimpinan.borrowedBooks', compact('borrows', 'status'));
     }
 
     public function lendingRules()
     {
         $rules = LibraryRules::first();
+
         return view('pimpinan.lendingRules', compact('rules'));
     }
 
@@ -66,6 +69,7 @@ class PimpinanController extends Controller
         ]);
         $rules = LibraryRules::first();
         $rules->update($newRules);
+
         return redirect()->route('pimpinan.lendingRules')->with('status', 'Aturan Berhasil Diubah!');
     }
 }

@@ -36,11 +36,12 @@ class BorrowBookController extends Controller
 
         // apply for a book loan
         $rules = LibraryRules::first();
-        $request->user()->books()->attach($book_id,[
+        $request->user()->books()->attach($book_id, [
             'status' => 'ASK TO BORROW',
             'return_limit'  => Carbon::now()->addDays($rules->day_limit),
             'fine' => $rules->fine,
         ]);
+
         return redirect()->route('anggota.booklist')->with('status', 'Peminjaman Sedang Menunggu Persetujuan!');
     }
 }

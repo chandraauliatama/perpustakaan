@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Models\Book;
 use Illuminate\Http\Request;
 use PDF;
-use Symfony\Component\HttpKernel\Event\ViewEvent;
 
 class ManageBookController extends Controller
 {
@@ -19,13 +18,14 @@ class ManageBookController extends Controller
     {
         $books = Book::orderBy('title');
         if (request('search')) {
-            $books->where('title', 'like', '%' . request('search') . '%')
-                ->Orwhere('author', 'like', '%' . request('search') . '%')
-                ->Orwhere('publisher', 'like', '%' . request('search') . '%')
+            $books->where('title', 'like', '%'.request('search').'%')
+                ->Orwhere('author', 'like', '%'.request('search').'%')
+                ->Orwhere('publisher', 'like', '%'.request('search').'%')
                 ->Orwhere('stock', request('search'))
                 ->Orwhere('year', request('search'));
         }
         $books = $books->paginate(10)->withQueryString();
+
         return view('operator.ManageBook.index', compact('books'));
     }
 
@@ -53,9 +53,10 @@ class ManageBookController extends Controller
             'publisher' => 'required',
             'category' => 'required',
             'year' => 'required|numeric',
-            'stock' => 'required|numeric'
+            'stock' => 'required|numeric',
         ]);
         Book::create($book);
+
         return redirect()->route('operator.book.index')->with('status', 'Buku Berhasil Ditambahkan!');
     }
 
@@ -79,6 +80,7 @@ class ManageBookController extends Controller
     public function edit($id)
     {
         $book = Book::find($id);
+
         return view('operator.ManageBook.edit', compact('book'));
     }
 
@@ -97,12 +99,12 @@ class ManageBookController extends Controller
             'publisher' => 'required',
             'category' => 'required',
             'year' => 'required|numeric',
-            'stock' => 'required|numeric'
+            'stock' => 'required|numeric',
         ]);
         $book = Book::find($id);
         $book->fill($request->all())->save();
-        return redirect()->route('operator.book.index')->with('status', 'Data Buku Berhasil Diubah!');
 
+        return redirect()->route('operator.book.index')->with('status', 'Data Buku Berhasil Diubah!');
     }
 
     /**
@@ -115,12 +117,13 @@ class ManageBookController extends Controller
     {
         $book = Book::find($id);
         $book->delete();
+
         return redirect()->route('operator.book.index')->with('delete', 'Buku Berhasil Dihapus!');
     }
 
     public function printAllBooks()
     {
-          // retreive all records from db
+        // retreive all records from db
         $books = Book::orderBy('title')->get();
         $pdf = PDF::loadView('pimpinan.printAllBooks', compact('books'));
         // download PDF file with download method

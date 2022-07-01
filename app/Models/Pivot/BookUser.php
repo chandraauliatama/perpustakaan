@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Models\Pivot;
 
 use App\Models\Book;
@@ -14,7 +15,7 @@ class BookUser extends Pivot
     ];
 
     public static $validation = [
-        'ASK TO BORROW', 'ON LOAN'
+        'ASK TO BORROW', 'ON LOAN',
     ];
 
     public function user()

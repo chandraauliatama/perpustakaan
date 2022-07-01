@@ -15,6 +15,7 @@ class DashboardController extends Controller
         $totalBooks = Book::sum('stock');
         $rules = LibraryRules::first();
         $borrowedBooks = BookUser::where('status', 'ON LOAN')->count();
+
         return view('pimpinan.dashboard', compact('rules', 'totalBooks', 'borrowedBooks'));
     }
 }

@@ -29,6 +29,7 @@ class CheckRole
         if ($role == 'anggota' && auth()->user()->role_id != Role::IS_ANGGOTA) {
             abort(403);
         }
+
         return $next($request);
     }
 }

@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Operator;
 use App\Http\Controllers\Controller;
 use App\Models\Book;
 use App\Models\Pivot\BookUser;
-use Illuminate\Http\Request;
 
 class ManageBorrowedBookController extends Controller
 {
@@ -18,16 +17,17 @@ class ManageBorrowedBookController extends Controller
     {
         $borrows = BookUser::orderBy('status');
         if (request('search')) {
-            $borrows->whereHas('book', function($query){
-                $query->where('title', 'like', '%' . request('search') . '%')
-                    ->Orwhere('author', 'like', '%' . request('search') . '%')
-                    ->Orwhere('publisher', 'like', '%' . request('search') . '%')
+            $borrows->whereHas('book', function ($query) {
+                $query->where('title', 'like', '%'.request('search').'%')
+                    ->Orwhere('author', 'like', '%'.request('search').'%')
+                    ->Orwhere('publisher', 'like', '%'.request('search').'%')
                     ->Orwhere('stock', request('search'))
                     ->Orwhere('year', request('search'));
             });
         }
         $borrows = $borrows->paginate(10)->withQueryString();
         $status = BookUser::$statuses;
+
         return view('operator.ManageBorrowedBook.index', compact('borrows', 'status'));
     }
 
@@ -41,15 +41,15 @@ class ManageBorrowedBookController extends Controller
         return view('operator.ManageBorrowedBook.create');
     }
 
-
     public function edit($id)
     {
         $borrow = BookUser::find($id);
         $book = Book::find($borrow->book_id);
         $borrow->status = 'ON LOAN';
-        $book->stock--; 
+        $book->stock--;
         $borrow->save();
         $book->save();
+
         return redirect()->route('operator.borrowed.index')->with('status', 'Buku disetujui untuk dipinjam!');
     }
 
@@ -65,9 +65,10 @@ class ManageBorrowedBookController extends Controller
         $borrow = BookUser::find($id);
         $book = Book::find($borrow->book_id);
         $borrow->status = 'RETURNED';
-        $book->stock++; 
+        $book->stock++;
         $borrow->save();
         $book->save();
+
         return redirect()->route('operator.borrowed.index')->with('status', 'Buku telah dikembalikan!');
     }
 
@@ -82,9 +83,11 @@ class ManageBorrowedBookController extends Controller
         $borrow = BookUser::find($id);
         if ($borrow->status == 'ASK TO BORROW') {
             $borrow->delete();
+
             return redirect()->route('operator.borrowed.index')->with('delete', 'Permintaaan peminjaman ditolak');
         }
         $borrow->delete();
+
         return redirect()->route('operator.borrowed.index')->with('delete', 'Data Peminjaman Dihapus');
     }
 }
