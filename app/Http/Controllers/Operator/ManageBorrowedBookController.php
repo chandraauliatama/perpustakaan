@@ -8,11 +8,6 @@ use App\Models\Pivot\BookUser;
 
 class ManageBorrowedBookController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $borrows = BookUser::orderBy('status');
@@ -32,61 +27,42 @@ class ManageBorrowedBookController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Accept Request Loan Book and Decrease Book Stock.
      *
+     * @param  BookUser  $borrowed
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function edit(BookUser $borrowed)
     {
-        return view('operator.ManageBorrowedBook.create');
-    }
-
-    public function edit($id)
-    {
-        $borrow = BookUser::find($id);
-        $book = Book::find($borrow->book_id);
-        $borrow->status = 'ON LOAN';
+        $book = Book::find($borrowed->book_id);
+        $borrowed->status = 'ON LOAN';
         $book->stock--;
-        $borrow->save();
+        $borrowed->save();
         $book->save();
 
         return redirect()->route('operator.borrowed.index')->with('status', 'Buku disetujui untuk dipinjam!');
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update($id)
+    public function update(BookUser $borrowed)
     {
-        $borrow = BookUser::find($id);
-        $book = Book::find($borrow->book_id);
-        $borrow->status = 'RETURNED';
+        $book = Book::find($borrowed->book_id);
+        $borrowed->status = 'RETURNED';
         $book->stock++;
-        $borrow->save();
+        $borrowed->save();
         $book->save();
 
         return redirect()->route('operator.borrowed.index')->with('status', 'Buku telah dikembalikan!');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+    public function destroy(BookUser $borrowed)
     {
-        $borrow = BookUser::find($id);
-        if ($borrow->status == 'ASK TO BORROW') {
-            $borrow->delete();
+        if ($borrowed->status == 'ASK TO BORROW') {
+            $borrowed->delete();
 
             return redirect()->route('operator.borrowed.index')->with('delete', 'Permintaaan peminjaman ditolak');
         }
-        $borrow->delete();
+
+        $borrowed->delete();
 
         return redirect()->route('operator.borrowed.index')->with('delete', 'Data Peminjaman Dihapus');
     }

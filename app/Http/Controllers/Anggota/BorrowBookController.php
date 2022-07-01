@@ -11,17 +11,11 @@ use Illuminate\Http\Request;
 
 class BorrowBookController extends Controller
 {
-    /**
-     * Handle the incoming request.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function __invoke(Request $request, $book_id)
+    public function __invoke(Request $request, Book $book)
     {
         // check whether the user is borrowing or applying for a loan for the books
         $exist = BookUser::where('user_id', auth()->id())
-                    ->where('book_id', $book_id)
+                    ->where('book_id', $book->id)
                     ->whereIn('status', BookUser::$validation)
                     ->first();
         if ($exist) {
@@ -29,14 +23,13 @@ class BorrowBookController extends Controller
         }
 
         // Check Stock
-        $stock = Book::find($book_id);
-        if ($stock->stock == 0) {
+        if ($book->stock == 0) {
             return redirect()->route('anggota.booklist')->with('delete', 'Buku sedang kosong!');
         }
 
         // apply for a book loan
         $rules = LibraryRules::first();
-        $request->user()->books()->attach($book_id, [
+        $request->user()->books()->attach($book->id, [
             'status' => 'ASK TO BORROW',
             'return_limit'  => Carbon::now()->addDays($rules->day_limit),
             'fine' => $rules->fine,

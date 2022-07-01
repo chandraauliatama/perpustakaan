@@ -28,11 +28,9 @@ class PimpinanController extends Controller
 
     public function printAllBooks()
     {
-        // retreive all records from db
-        // $qrcode = base64_encode(\QrCode::format('svg')->size(200)->errorCorrection('H')->generate('string'));
         $books = Book::orderBy('title')->get();
         $pdf = PDF::loadView('pimpinan.printAllBooks', compact('books'));
-        // download PDF file with download method
+
         return $pdf->stream();
     }
 

@@ -47,22 +47,20 @@ class ManageUserController extends Controller
         return redirect()->route('admin.user.index')->with('status', 'Pengguna Berhasil Ditambahkan!');
     }
 
-    public function edit($id)
+    public function edit(User $user)
     {
-        $user = User::find($id);
         $roles = Role::all();
 
         return view('admin.ManageUser.edit', compact('user', 'roles'));
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user)
     {
         $request->validate([
             'name' => 'required|string|min:3|max:255',
-            'email' => "required|email|unique:users,email,{$id}",
+            'email' => "required|email|unique:users,email,{$user->id}",
             'role_id' => 'required|in:1,2,3,4',
         ]);
-        $user = User::find($id);
         $user->name = $request->name;
         $user->email = $request->email;
         $user->role_id = $request->role_id;
@@ -72,9 +70,8 @@ class ManageUserController extends Controller
         return redirect()->route('admin.user.index')->with('status', 'Data Pengguna Berhasil Diubah!');
     }
 
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        $user = User::find($id);
         $user->delete();
 
         return redirect()->route('admin.user.index')->with('delete', 'Pengguna Berhasil Dihapus!');
@@ -85,7 +82,7 @@ class ManageUserController extends Controller
         // retreive all records from db
         $users = User::orderBy('role_id')->get();
         $pdf = PDF::loadView('admin.ManageUser.printAllUsers', compact('users'));
-        // download PDF file with download method
+
         return $pdf->stream();
     }
 }
