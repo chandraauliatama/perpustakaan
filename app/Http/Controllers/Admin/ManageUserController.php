@@ -14,7 +14,7 @@ class ManageUserController extends Controller
 {
     public function index()
     {
-        $users = User::orderBy('role_id');
+        $users = User::with('role')->orderBy('role_id');
         if (request('search')) {
             $users->where('name', 'like', '%'.request('search').'%')
                 ->orWhere('email', 'like', '%'.request('search').'%')
@@ -80,7 +80,7 @@ class ManageUserController extends Controller
     public function printAllUsers()
     {
         // retreive all records from db
-        $users = User::orderBy('role_id')->get();
+        $users = User::with('role')->orderBy('role_id')->get();
         $pdf = PDF::loadView('admin.ManageUser.printAllUsers', compact('users'));
 
         return $pdf->stream();

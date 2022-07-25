@@ -18,8 +18,8 @@ class DashboardController extends Controller
         $pimpinan = User::where('role_id', '2')->count();
         $operator = User::where('role_id', '3')->count();
         $anggota = User::where('role_id', '4')->count();
-        $totalBooks = Book::sum('stock');
         $newUserThisWeek = User::where('created_at', '>', Carbon::now()->startOfWeek())->where('created_at', '<', Carbon::now()->endOfWeek())->count();
+        $totalBooks = Book::sum('stock');
         $borrowedBooks = BookUser::where('status', 'ON LOAN')->count();
 
         return view('admin.dashboard', compact('totalUsers', 'totalBooks', 'newUserThisWeek', 'borrowedBooks', 'admin', 'pimpinan', 'operator', 'anggota'));

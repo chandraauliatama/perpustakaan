@@ -10,11 +10,11 @@ class DashboardController extends Controller
 {
     public function __invoke(Request $request)
     {
-        $allBooks = BookUser::where('user_id', auth()->user()->id);
-        $allBook = $allBooks->count();
-        $borrowedBooks = $allBooks->where('status', 'ON LOAN')->count();
-        $requestedBooks = BookUser::where('user_id', auth()->user()->id)->where('status', 'ASK TO BORROW')->count();
-        $returnedBooks = BookUser::where('user_id', auth()->user()->id)->where('status', 'RETURNED')->count();
+        $status = array_keys(BookUser::$statuses);
+        $allBook = BookUser::where('user_id', auth()->id())->count();
+        $requestedBooks = BookUser::where('user_id', auth()->id())->where('status', $status[0])->count();
+        $borrowedBooks = BookUser::where('user_id', auth()->id())->where('status', $status[1])->count();
+        $returnedBooks = BookUser::where('user_id', auth()->id())->where('status', $status[2])->count();
 
         return view('anggota.dashboard', compact('allBook', 'borrowedBooks', 'requestedBooks', 'returnedBooks'));
     }
