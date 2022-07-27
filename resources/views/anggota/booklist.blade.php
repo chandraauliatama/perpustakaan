@@ -24,11 +24,8 @@
                         <x-button class="mb-3 font-bold">Cari </x-button>
                     </form>
                     {{-- Status --}}
-                    @if (session())
-                        <div x-data="{ show: true }" x-show="show" x-init="setTimeout(() => show = false, 2500)">
-                            <div class="text-green-500 font-bold mb-4">{{ session('status') }}</div>
-                            <div class="text-red-500 font-bold mb-4">{{ session('delete') }}</div>
-                        </div>
+                    @if (session('status') || session('delete'))
+                        <x-session-message></x-session-message>
                     @endif
                     {{-- Grid --}}
                     <div class="grid gap-6 mb-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">

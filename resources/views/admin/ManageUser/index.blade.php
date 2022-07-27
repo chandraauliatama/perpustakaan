@@ -19,11 +19,8 @@
                         <x-button class="mb-3 font-bold">Cari </x-button>
                     </form>
                     {{-- Table Template --}}
-                    @if (session())
-                        <div x-data="{ show: true }" x-show="show" x-init="setTimeout(() => show = false, 2500)">
-                            <div class="text-green-500 font-bold mb-4">{{ session('status') }}</div>
-                            <div class="text-red-500 font-bold mb-4">{{ session('delete') }}</div>
-                        </div>
+                    @if (session('status') || session('delete'))
+                        <x-session-message></x-session-message>
                     @endif
                     <div class="w-full mt-3 overflow-hidden rounded-lg shadow-xs">
                         <div class="w-full overflow-x-auto">
