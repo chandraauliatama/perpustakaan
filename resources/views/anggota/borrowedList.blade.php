@@ -77,8 +77,8 @@
                                             <td class="px-4 py-3 text-sm">
                                                 @php
                                                     $fine = \Carbon\Carbon::create($book->return_limit);
-                                                    if (\Carbon\Carbon::now() > $fine && $book->status == 'ON LOAN') {
-                                                        echo $book->diffInDays() * $book->fine;
+                                                    if (now() > $fine && $book->status == 'ON LOAN') {
+                                                        echo $fine->diffInDays() * $book->fine;
                                                     } else {
                                                         echo 0;
                                                     }

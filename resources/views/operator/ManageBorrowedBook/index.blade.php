@@ -80,7 +80,7 @@
                                             <td class="px-4 py-3 text-sm">
                                                 @php
                                                     $fine = \Carbon\Carbon::create($borrow->return_limit);
-                                                    if (\Carbon\Carbon::now() > $fine && $borrow->status == 'ON LOAN') {
+                                                    if (now() > $fine && $borrow->status == 'ON LOAN') {
                                                         echo $fine->diffInDays() * $borrow->fine;
                                                     } else {
                                                         echo 0;
