@@ -27,7 +27,7 @@
                             <table class="w-full whitespace-no-wrap">
                                 <thead>
                                     <tr
-                                        class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
+                                        class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b bg-gray-50 ">
                                         <th class="px-4 py-3">Nama</th>
                                         {{-- <th class="px-4 py-3">Buku Dipinjam</th> --}}
                                         <th class="px-4 py-3">Role</th>
@@ -36,9 +36,9 @@
                                         <th class="px-4 py-3">Aksi</th>
                                     </tr>
                                 </thead>
-                                <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
+                                <tbody class="bg-white divide-y ">
                                     @forelse ($users as $user)
-                                        <tr class="text-gray-700 dark:text-gray-400">
+                                        <tr class="text-gray-700 ">
                                             <td class="px-4 py-3">
                                                 <div class="flex items-center text-sm">
                                                     <!-- Avatar with inset shadow -->
@@ -51,7 +51,7 @@
                                                 </div> --}}
                                                     <div>
                                                         <p class="font-semibold">{{ $user->name }}</p>
-                                                        <p class="text-xs text-gray-600 dark:text-gray-400">
+                                                        <p class="text-xs text-gray-600 ">
                                                             {{-- 10x Developer --}}
                                                         </p>
                                                     </div>
@@ -73,7 +73,7 @@
                                                     }
                                                 @endphp
                                                 <span
-                                                    class="px-2 py-1 font-semibold leading-tight {{ $color }} rounded-full dark:bg-green-700 dark:text-green-100">
+                                                    class="px-2 py-1 font-semibold leading-tight {{ $color }} rounded-full ">
                                                     {{ $user->role->name }}
                                                 </span>
                                             </td>
@@ -88,7 +88,7 @@
                                                     <form action="{{ route('admin.user.edit', $user) }}"
                                                         method="get">
                                                         <button
-                                                            class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 hover:text-purple-900 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray"
+                                                            class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 hover:text-purple-900 rounded-lg focus:outline-none focus:shadow-outline-gray"
                                                             aria-label="Edit">
                                                             <svg class="w-5 h-5" aria-hidden="true" fill="currentColor"
                                                                 viewBox="0 0 20 20">
@@ -103,7 +103,7 @@
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit"
-                                                            class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-red-500 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray"
+                                                            class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-red-500 rounded-lg focus:outline-none focus:shadow-outline-gray"
                                                             aria-label="Delete">
                                                             <svg class="w-5 h-5" aria-hidden="true" fill="currentColor"
                                                                 viewBox="0 0 20 20">

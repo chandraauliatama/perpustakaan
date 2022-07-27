@@ -12,9 +12,8 @@
                     {{-- Statistik --}}
                     <div class="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4">
                         <!-- Card -->
-                        <div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
-                            <div
-                                class="p-3 mr-4 text-orange-500 bg-orange-100 rounded-full dark:text-orange-100 dark:bg-orange-500">
+                        <div class="flex items-center p-4 bg-white rounded-lg shadow-xs ">
+                            <div class="p-3 mr-4 text-orange-500 bg-orange-100 rounded-full 0">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
                                     fill="currentColor">
                                     <path
@@ -22,18 +21,17 @@
                                 </svg>
                             </div>
                             <div>
-                                <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
+                                <p class="mb-2 text-sm font-medium text-gray-600 ">
                                     Buku Yang Sedang Dipinjam
                                 </p>
-                                <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
+                                <p class="text-lg font-semibold text-gray-700 ">
                                     {{ $borrowedBooks }}
                                 </p>
                             </div>
                         </div>
                         <!-- Card -->
-                        <div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
-                            <div
-                                class="p-3 mr-4 text-blue-500 bg-blue-100 rounded-full dark:text-blue-100 dark:bg-blue-500">
+                        <div class="flex items-center p-4 bg-white rounded-lg shadow-xs ">
+                            <div class="p-3 mr-4 text-blue-500 bg-blue-100 rounded-full ">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
                                     fill="currentColor">
                                     <path fill-rule="evenodd"
@@ -42,18 +40,17 @@
                                 </svg>
                             </div>
                             <div>
-                                <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
+                                <p class="mb-2 text-sm font-medium text-gray-600 ">
                                     Menunggu Persetujuan
                                 </p>
-                                <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
+                                <p class="text-lg font-semibold text-gray-700 ">
                                     {{ $requestedBooks }}
                                 </p>
                             </div>
                         </div>
                         <!-- Card -->
-                        <div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
-                            <div
-                                class="p-3 mr-4 text-teal-500 bg-teal-100 rounded-full dark:text-teal-100 dark:bg-teal-500">
+                        <div class="flex items-center p-4 bg-white rounded-lg shadow-xs ">
+                            <div class="p-3 mr-4 text-teal-500 bg-teal-100 rounded-full ">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
                                     fill="currentColor">
                                     <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />
@@ -63,18 +60,17 @@
                                 </svg>
                             </div>
                             <div>
-                                <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
+                                <p class="mb-2 text-sm font-medium text-gray-600 ">
                                     Buku Yang Sudah Dikembalikan
                                 </p>
-                                <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
+                                <p class="text-lg font-semibold text-gray-700 ">
                                     {{ $returnedBooks }}
                                 </p>
                             </div>
                         </div>
                         <!-- Card -->
-                        <div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
-                            <div
-                                class="p-3 mr-4 text-green-500 bg-green-100 rounded-full dark:text-green-100 dark:bg-green-500">
+                        <div class="flex items-center p-4 bg-white rounded-lg shadow-xs ">
+                            <div class="p-3 mr-4 text-green-500 bg-green-100 rounded-full ">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
                                     fill="currentColor">
                                     <path
@@ -82,10 +78,10 @@
                                 </svg>
                             </div>
                             <div>
-                                <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
+                                <p class="mb-2 text-sm font-medium text-gray-600 ">
                                     Total Peminjaman Selama Ini
                                 </p>
-                                <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
+                                <p class="text-lg font-semibold text-gray-700 ">
                                     {{ $allBook }}
                                 </p>
                             </div>
@@ -94,12 +90,12 @@
 
                     {{-- Chart --}}
                     @if ($allBook)
-                        <div class="w-17 sm:w-1/3 p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
-                            <h4 class="mb-4 font-semibold text-gray-800 dark:text-gray-300 text-center">
+                        <div class="w-17 sm:w-1/3 p-4 bg-white rounded-lg shadow-xs ">
+                            <h4 class="mb-4 font-semibold text-gray-800 text-center">
                                 Buku Dipinjam
                             </h4>
                             <canvas id="myChart"></canvas>
-                            <div class="flex justify-center mt-4 space-x-3 text-sm text-gray-600 dark:text-gray-400">
+                            <div class="flex justify-center mt-4 space-x-3 text-sm text-gray-600 ">
                                 <!-- Chart legend -->
                                 <div class="flex items-center">
                                     <span class="inline-block w-3 h-3 mr-1 bg-blue-600 rounded-full"></span>

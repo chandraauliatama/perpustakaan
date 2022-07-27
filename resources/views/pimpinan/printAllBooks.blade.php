@@ -36,7 +36,7 @@
                              <table class="w-full whitespace-no-wrap">
                                  <thead>
                                      <tr
-                                         class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
+                                         class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b bg-gray-50 ">
                                          <th class="px-4 py-3">Judul</th>
                                          {{-- <th class="px-4 py-3">Buku Dipinjam</th> --}}
                                          <th class="px-4 py-3">Penulis</th>
@@ -46,9 +46,9 @@
                                          <th class="px-4 py-3">QRCODE</th>
                                      </tr>
                                  </thead>
-                                 <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
+                                 <tbody class="bg-white divide-y ">
                                      @foreach ($books as $book)
-                                         <tr class="text-gray-700 dark:text-gray-400">
+                                         <tr class="text-gray-700 ">
                                              <td class="px-4 py-3">
                                                  <div class="flex items-center text-sm">
                                                      <!-- Avatar with inset shadow -->
@@ -61,7 +61,7 @@
                                                 </div> --}}
                                                      <div>
                                                          <p class="font-semibold">{{ $book->title }}</p>
-                                                         <p class="text-xs text-gray-600 dark:text-gray-400">
+                                                         <p class="text-xs text-gray-600 ">
                                                              {{-- 10x Developer --}}
                                                          </p>
                                                      </div>
