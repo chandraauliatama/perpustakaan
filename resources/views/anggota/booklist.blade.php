@@ -35,64 +35,11 @@
                         {{-- Looping --}}
                         @forelse ($books as $book)
                             @if ($loop->iteration % 3 == 0)
-                                <div
-                                    class="min-w-0 p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800 border-2 relative">
-                                    <h4 class="mb-4 font-bold text-gray-600 dark:text-gray-300">
-                                        {{ $book->title }}
-                                    </h4>
-                                    <p class="text-gray-600 dark:text-gray-400">Penulis: {{ $book->author }} </p>
-                                    <p class="text-gray-600 dark:text-gray-400">Penerbit: {{ $book->publisher }} </p>
-                                    <p class="text-gray-600 dark:text-gray-400">Tahun Terbit: {{ $book->year }} </p>
-                                    <p class="text-gray-600 dark:text-gray-400">Stok: {{ $book->stock }} </p>
-                                    <div class="absolute bottom-0 right-0">
-                                        <form action="{{ route('anggota.borrow', $book->id) }}" method="POST">
-                                            @csrf
-                                            <button
-                                                class="px-4 py-2 text-sm font-bold leading-5 text-slate-900 hover:text-slate-200 transition-colors duration-150 bg-slate-400 border border-transparent rounded-lg hover:bg-slate-900 hover:cursor-pointer">
-                                                Ajukan Pinjam
-                                            </button>
-                                        </form>
-                                    </div>
-                                </div>
-                            @elseif($loop->iteration == 2 || $loop->iteration == 5 || $loop->iteration == 8 || $loop->iteration == 11)
-                                <div class="min-w-0 p-4 text-white bg-slate-300 rounded-lg shadow-xs relative">
-                                    <h4 class="mb-4 font-bold text-gray-600 dark:text-gray-300">
-                                        {{ $book->title }}
-                                    </h4>
-                                    <p class="text-gray-700 dark:text-gray-400">Penulis: {{ $book->author }} </p>
-                                    <p class="text-gray-700 dark:text-gray-400">Penerbit: {{ $book->publisher }} </p>
-                                    <p class="text-gray-700 dark:text-gray-400">Tahun Terbit: {{ $book->year }} </p>
-                                    <p class="text-gray-700 dark:text-gray-400">Stok: {{ $book->stock }} </p>
-                                    <div class="absolute bottom-0 right-0">
-                                        <form action="{{ route('anggota.borrow', $book->id) }}" method="POST">
-                                            @csrf
-                                            <button
-                                                class="px-4 py-2 text-sm font-bold leading-5 text-white transition-colors duration-150 bg-slate-600 border border-transparent rounded-lg hover:bg-slate-900 hover:cursor-pointer">
-                                                Ajukan Pinjam
-                                            </button>
-                                        </form>
-                                    </div>
-                                </div>
+                                <x-book-card3 :book="$book"></x-book-card3>
+                            @elseif(in_array($loop->iteration, [2, 5, 8, 11]))
+                                <x-book-card2 :book="$book"></x-book-card2>
                             @else
-                                <div class="min-w-0 p-4 text-white bg-slate-500 rounded-lg shadow-xs relative">
-
-                                    <h4 class="mb-4 font-semibold">
-                                        {{ $book->title }}
-                                    </h4>
-                                    <p>Penulis: {{ $book->author }} </p>
-                                    <p>Penerbit: {{ $book->publisher }} </p>
-                                    <p>Tahun Terbit: {{ $book->year }} </p>
-                                    <p>Stok: {{ $book->stock }} </p>
-                                    <div class="absolute bottom-0 right-0">
-                                        <form action="{{ route('anggota.borrow', $book->id) }}" method="POST">
-                                            @csrf
-                                            <button
-                                                class="px-4 py-2 text-sm font-bold leading-5 text-white hover:text-slate-900 transition-colors duration-150 bg-slate-800 border border-transparent rounded-lg hover:bg-slate-300 hover:cursor-pointer">
-                                                Ajukan Pinjam
-                                            </button>
-                                        </form>
-                                    </div>
-                                </div>
+                                <x-book-card1 :book="$book"></x-book-card1>
                             @endif
                         @empty
                             <div class="col-span-2">
