@@ -10,7 +10,7 @@ class ManageBorrowedBookController extends Controller
 {
     public function index()
     {
-        $borrows = BookUser::orderBy('status');
+        $borrows = BookUser::with('book', 'user')->orderBy('status');
         if (request('search')) {
             $borrows->whereHas('book', function ($query) {
                 $query->where('title', 'like', '%'.request('search').'%')
