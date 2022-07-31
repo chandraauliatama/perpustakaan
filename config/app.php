@@ -17,6 +17,8 @@ return [
 
     'name' => env('APP_NAME', 'Laravel'),
 
+    'tailwind_display_mode' => env('TAILWIND_DISPLAY_MODE', ''),
+
     /*
     |--------------------------------------------------------------------------
     | Application Environment

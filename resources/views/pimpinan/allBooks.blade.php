@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        <h2 class="font-semibold text-xl leading-tight">
             {{ __('Semua Buku') }}
         </h2>
     </x-slot>
@@ -12,16 +12,11 @@
                     {{-- Scan Toogle --}}
                     <div x-show="open" id="reader" width="500px"></div>
                     {{-- Print Button --}}
-                    <a href="{{ route('pimpinan.printAllBooks') }}" target="_blank"
-                        class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150">{{ __('Cetak Laporan') }}</a>
+                    <x-button ahref href="{{ route('pimpinan.printAllBooks') }}" target="_blank">
+                        {{ __('Cetak Laporan') }}</x-button>
                     {{-- Search QR Button --}}
-                    <button x-on:click="open = ! open"
-                        class="inline-flex items-center mt-2 px-4 py-2 bg-gray-800
-                            border border-transparent rounded-md font-semibold text-xs text-white uppercase
-                            tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none
-                            focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out
-                            duration-150">Cari
-                        dengan QRCODE</button>
+                    <x-button x-on:click="open = ! open">Cari
+                        dengan QRCODE</x-button>
                     {{-- Search Form --}}
                     <form action="{{ route('pimpinan.books') }}">
                         <x-input id="search" class="mt-1 w-1/2" type="text" name="search"
