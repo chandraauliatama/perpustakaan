@@ -12,7 +12,7 @@
                     {{-- Statistik --}}
                     <div class="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4">
                         <!-- Card -->
-                        <div class="flex items-center p-4 bg-white rounded-lg shadow-xs ">
+                        <x-stat-card title="Total Pengguna" :stat="$totalUsers">
                             <div class="p-3 mr-4 text-orange-500 bg-orange-100 rounded-full 0">
                                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                                     <path
@@ -20,17 +20,9 @@
                                     </path>
                                 </svg>
                             </div>
-                            <div>
-                                <p class="mb-2 text-sm font-medium text-gray-600 ">
-                                    Total Pengguna
-                                </p>
-                                <p class="text-lg font-semibold text-gray-700 ">
-                                    {{ $totalUsers }}
-                                </p>
-                            </div>
-                        </div>
+                        </x-stat-card>
                         <!-- Card -->
-                        <div class="flex items-center p-4 bg-white rounded-lg shadow-xs ">
+                        <x-stat-card title="Total Buku" :stat="$totalBooks">
                             <div class="p-3 mr-4 text-blue-500 bg-blue-100 rounded-full ">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
                                     fill="currentColor">
@@ -38,17 +30,9 @@
                                         d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.669 0 3.218.51 4.5 1.385A7.962 7.962 0 0114.5 14c1.255 0 2.443.29 3.5.804v-10A7.968 7.968 0 0014.5 4c-1.255 0-2.443.29-3.5.804V12a1 1 0 11-2 0V4.804z" />
                                 </svg>
                             </div>
-                            <div>
-                                <p class="mb-2 text-sm font-medium text-gray-600 ">
-                                    Total Buku
-                                </p>
-                                <p class="text-lg font-semibold text-gray-700 ">
-                                    {{ $totalBooks }}
-                                </p>
-                            </div>
-                        </div>
+                        </x-stat-card>
                         <!-- Card -->
-                        <div class="flex items-center p-4 bg-white rounded-lg shadow-xs ">
+                        <x-stat-card title="Total Buku Dipinjam" :stat="$borrowedBooks">
                             <div class="p-3 mr-4 text-teal-500 bg-teal-100 rounded-full ">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
                                     fill="currentColor">
@@ -57,17 +41,9 @@
                                     <path d="M9 13h2v5a1 1 0 11-2 0v-5z" />
                                 </svg>
                             </div>
-                            <div>
-                                <p class="mb-2 text-sm font-medium text-gray-600 ">
-                                    Total Buku Dipinjam
-                                </p>
-                                <p class="text-lg font-semibold text-gray-700 ">
-                                    {{ $borrowedBooks }}
-                                </p>
-                            </div>
-                        </div>
+                        </x-stat-card>
                         <!-- Card -->
-                        <div class="flex items-center p-4 bg-white rounded-lg shadow-xs ">
+                        <x-stat-card title="Permintaan Pinjam Buku" :stat="$bookRequest">
                             <div class="p-3 mr-4 text-green-500 bg-green-100 rounded-full ">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
                                     fill="currentColor">
@@ -76,15 +52,7 @@
                                         clip-rule="evenodd" />
                                 </svg>
                             </div>
-                            <div>
-                                <p class="mb-2 text-sm font-medium text-gray-600 ">
-                                    Permintaan Pinjam Buku
-                                </p>
-                                <p class="text-lg font-semibold text-gray-700 ">
-                                    {{ $bookRequest }}
-                                </p>
-                            </div>
-                        </div>
+                        </x-stat-card>
                     </div>
                 </div>
             </div>
