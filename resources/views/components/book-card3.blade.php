@@ -1,6 +1,6 @@
 @props(['book'])
 
-<div class="min-w-0 p-4 bg-white text-gray-600 rounded-lg shadow-xs border-2 relative">
+<div class="min-w-0 p-4 bg-white text-gray-600 rounded-lg shadow-xs border-2 relative dark:bg-gray-200">
     <h4 class="mb-4 font-bold">
         {{ $book->title }}
     </h4>

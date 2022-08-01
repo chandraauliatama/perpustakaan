@@ -7,8 +7,8 @@
 
     <div class="py-12">
         <div class="max-w-2xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 bg-white border-b border-gray-200">
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg dark:bg-gray-800">
+                <div class="p-6 bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-black">
                     <form method="POST" action="{{ route('admin.user.update', $user->id) }}">
                         @csrf
                         @method('PUT')
@@ -43,7 +43,7 @@
                         <div class="mt-4">
                             <x-label for="role_id" :value="__('Role')" />
                             <select name="role_id" id="role_id"
-                                class="block mt-1 w-full rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                                class="block mt-1 w-full rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-300">
                                 <option>Pilih Role</option>
                                 @foreach ($roles as $role)
                                     <option value="{{ $role->id }}"
@@ -58,9 +58,9 @@
                             <label for="reset-password" class="inline-flex relative items-center cursor-pointer">
                                 <input type="checkbox" id="reset-password" name="reset-password" class="sr-only peer">
                                 <div
-                                    class="w-11 h-6 bg-gray-400 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600">
+                                    class="w-11 h-6 bg-gray-400 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600 dark:bg-gray-700 dark:peer-checked:bg-gray-900 dark:peer-checked:after:bg-gray-500 dark:peer-checked:after:border-gray-700 dark:peer-focus:ring-gray-600">
                                 </div>
-                                <span class="ml-3 text-sm font-medium text-gray-700 ">Reset
+                                <span class="ml-3 text-sm font-medium text-gray-700 dark:text-gray-400">Reset
                                     Password</span>
                             </label>
                         </div>

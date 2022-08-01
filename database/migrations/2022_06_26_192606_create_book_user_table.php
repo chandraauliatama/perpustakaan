@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('book_user', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('book_id');
-            $table->foreignId('user_id');
+            $table->foreignId('book_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->timestamp('return_limit');
             $table->integer('fine');
             $table->string('status');

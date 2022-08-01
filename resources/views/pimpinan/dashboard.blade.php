@@ -13,7 +13,8 @@
                     <div class="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4">
                         <!-- Card -->
                         <x-stat-card title="Total Buku" :stat="$totalBooks">
-                            <div class="p-3 mr-4 text-orange-500 bg-orange-100 rounded-full 0">
+                            <div
+                                class="p-3 mr-4 text-orange-500 bg-orange-100 rounded-full dark:text-orange-100 dark:bg-orange-500">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
                                     fill="currentColor">
                                     <path
@@ -23,7 +24,8 @@
                         </x-stat-card>
                         <!-- Card -->
                         <x-stat-card title="Buku Dipinjam" :stat="$borrowedBooks">
-                            <div class="p-3 mr-4 text-green-500 bg-green-100 rounded-full ">
+                            <div
+                                class="p-3 mr-4 text-green-500 bg-green-100 rounded-full dark:text-green-100 dark:bg-green-500">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
                                     fill="currentColor">
                                     <path
@@ -34,7 +36,8 @@
                         </x-stat-card>
                         <!-- Card -->
                         <x-stat-card title="Batas Pinjam" stat="{{ $rules->day_limit }} Hari">
-                            <div class="p-3 mr-4 text-blue-500 bg-blue-100 rounded-full ">
+                            <div
+                                class="p-3 mr-4 text-blue-500 bg-blue-100 rounded-full dark:text-blue-100 dark:bg-blue-500">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
                                     fill="currentColor">
                                     <path fill-rule="evenodd"
@@ -45,7 +48,8 @@
                         </x-stat-card>
                         <!-- Card -->
                         <x-stat-card title="Denda Perhari" stat="Rp.{{ $rules->fine }}">
-                            <div class="p-3 mr-4 text-teal-500 bg-teal-100 rounded-full ">
+                            <div
+                                class="p-3 mr-4 text-teal-500 bg-teal-100 rounded-full dark:text-teal-100 dark:bg-teal-500">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
                                     fill="currentColor">
                                     <path fill-rule="evenodd"

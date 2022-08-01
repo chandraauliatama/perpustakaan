@@ -7,8 +7,9 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 bg-white border-b border-gray-200" x-data="{ open: false }">
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg dark:bg-gray-800">
+                <div class="p-6 bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-black"
+                    x-data="{ open: false }">
                     {{-- Scan Toogle --}}
                     <div x-show="open" id="reader" width="500px"></div>
                     {{-- Print Button --}}
@@ -33,7 +34,7 @@
                             <table class="w-full whitespace-no-wrap">
                                 <thead>
                                     <tr
-                                        class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b bg-gray-50 ">
+                                        class="text-xs font-bold tracking-wide text-left text-gray-500 uppercase border-b bg-gray-50 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-700">
                                         <th class="px-4 py-3">Judul</th>
                                         {{-- <th class="px-4 py-3">Buku Dipinjam</th> --}}
                                         <th class="px-4 py-3">Penulis</th>
@@ -42,9 +43,9 @@
                                         <th class="px-4 py-3">Stok</th>
                                     </tr>
                                 </thead>
-                                <tbody class="bg-white divide-y ">
+                                <tbody class="bg-white divide-y dark:bg-gray-800">
                                     @foreach ($books as $book)
-                                        <tr class="text-gray-700 ">
+                                        <tr class="text-gray-700 dark:text-gray-400 dark:border-gray-700">
                                             <td class="px-4 py-3">
                                                 <div class="flex items-center text-sm">
                                                     <!-- Avatar with inset shadow -->

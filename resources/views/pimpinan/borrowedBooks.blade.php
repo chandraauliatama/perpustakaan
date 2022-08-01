@@ -7,8 +7,8 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 bg-white border-b border-gray-200">
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg dark:bg-gray-800">
+                <div class="p-6 bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-black">
                     {{-- Search Form --}}
                     <form action="{{ route('operator.borrowed.index') }}">
                         <x-input id="search" class="mt-1 w-1/2" type="text" name="search"
@@ -25,7 +25,7 @@
                             <table class="w-full whitespace-no-wrap">
                                 <thead>
                                     <tr
-                                        class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b bg-gray-50 ">
+                                        class="text-xs font-bold tracking-wide text-left text-gray-500 uppercase border-b bg-gray-50 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-700">
                                         <th class="px-4 py-3">Judul</th>
                                         {{-- <th class="px-4 py-3">Buku Dipinjam</th> --}}
                                         <th class="px-4 py-3">Penulis</th>
@@ -35,19 +35,11 @@
                                         <th class="px-4 py-3">Denda</th>
                                     </tr>
                                 </thead>
-                                <tbody class="bg-white divide-y ">
+                                <tbody class="bg-white divide-y dark:bg-gray-800">
                                     @foreach ($borrows as $borrow)
-                                        <tr class="text-gray-700 ">
+                                        <tr class="text-gray-700 dark:text-gray-400 dark:border-gray-700">
                                             <td class="px-4 py-3">
                                                 <div class="flex items-center text-sm">
-                                                    <!-- Avatar with inset shadow -->
-                                                    {{-- <div class="relative hidden w-8 h-8 mr-3 rounded-full md:block">
-                                                    <img class="object-cover w-full h-full rounded-full"
-                                                        src="https://images.unsplash.com/flagged/photo-1570612861542-284f4c12e75f?ixlib=rb-1.2.1&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=200&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjE3Nzg0fQ"
-                                                        alt="" loading="lazy">
-                                                    <div class="absolute inset-0 rounded-full shadow-inner"
-                                                        aria-hidden="true"></div>
-                                                </div> --}}
                                                     <div>
                                                         <p class="font-semibold">{{ $borrow->book->title }}</p>
                                                         <p class="text-xs text-gray-600 ">
@@ -56,9 +48,6 @@
                                                     </div>
                                                 </div>
                                             </td>
-                                            {{-- <td class="px-4 py-3 text-sm">
-                                                $ 863.45
-                                            </td> --}}
                                             <td class="px-4 py-3 text-sm">
                                                 {{ $borrow->book->author }}
                                             </td>

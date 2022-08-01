@@ -13,7 +13,8 @@
                     <div class="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4">
                         <!-- Card -->
                         <x-stat-card title="Buku Yang Sedang Dipinjam" :stat="$borrowedBooks">
-                            <div class="p-3 mr-4 text-orange-500 bg-orange-100 rounded-full 0">
+                            <div
+                                class="p-3 mr-4 text-orange-500 bg-orange-100 rounded-full dark:text-orange-100 dark:bg-orange-500">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
                                     fill="currentColor">
                                     <path
@@ -23,7 +24,8 @@
                         </x-stat-card>
                         <!-- Card -->
                         <x-stat-card title="Menunggu Persetujuan" :stat="$requestedBooks">
-                            <div class="p-3 mr-4 text-blue-500 bg-blue-100 rounded-full ">
+                            <div
+                                class="p-3 mr-4 text-blue-500 bg-blue-100 rounded-full dark:text-blue-100 dark:bg-blue-500">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
                                     fill="currentColor">
                                     <path fill-rule="evenodd"
@@ -34,7 +36,8 @@
                         </x-stat-card>
                         <!-- Card -->
                         <x-stat-card title="Buku Yang Sudah Dikembalikan" :stat="$returnedBooks">
-                            <div class="p-3 mr-4 text-teal-500 bg-teal-100 rounded-full ">
+                            <div
+                                class="p-3 mr-4 text-teal-500 bg-teal-100 rounded-full dark:text-teal-100 dark:bg-teal-500">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
                                     fill="currentColor">
                                     <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />
@@ -46,7 +49,8 @@
                         </x-stat-card>
                         <!-- Card -->
                         <x-stat-card title="Total Peminjaman Selama Ini" :stat="$allBook">
-                            <div class="p-3 mr-4 text-green-500 bg-green-100 rounded-full ">
+                            <div
+                                class="p-3 mr-4 text-green-500 bg-green-100 rounded-full dark:text-green-100 dark:bg-green-500 ">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
                                     fill="currentColor">
                                     <path
@@ -58,7 +62,7 @@
 
                     {{-- Chart --}}
                     @if ($allBook)
-                        <div class="w-17 sm:w-1/3 p-4 bg-white rounded-lg shadow-xs ">
+                        <div class="w-17 sm:w-1/3 p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
                             <h4 class="mb-4 font-semibold text-gray-800 text-center">
                                 Buku Dipinjam
                             </h4>
@@ -67,15 +71,15 @@
                                 <!-- Chart legend -->
                                 <div class="flex items-center">
                                     <span class="inline-block w-3 h-3 mr-1 bg-blue-600 rounded-full"></span>
-                                    <span>Sudah Dikembalikan</span>
+                                    <span class="dark:text-gray-400">Sudah Dikembalikan</span>
                                 </div>
                                 <div class="flex items-center">
                                     <span class="inline-block w-3 h-3 mr-1 bg-teal-500 rounded-full"></span>
-                                    <span>Sedang Dipinjam</span>
+                                    <span class="dark:text-gray-400">Sedang Dipinjam</span>
                                 </div>
                                 <div class="flex items-center">
                                     <span class="inline-block w-3 h-3 mr-1 bg-purple-600 rounded-full"></span>
-                                    <span>Menunggu Persetujuan</span>
+                                    <span class="dark:text-gray-400">Menunggu Persetujuan</span>
                                 </div>
                             </div>
                         </div>

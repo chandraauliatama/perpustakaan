@@ -13,7 +13,8 @@
                     <div class="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4">
                         <!-- Card -->
                         <x-stat-card title="Total Pengguna" :stat="$totalUsers">
-                            <div class="p-3 mr-4 text-orange-500 bg-orange-100 rounded-full 0">
+                            <div
+                                class="p-3 mr-4 text-orange-500 bg-orange-100 rounded-full 0 dark:text-orange-100 dark:bg-orange-500">
                                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                                     <path
                                         d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z">
@@ -23,7 +24,8 @@
                         </x-stat-card>
                         <!-- Card -->
                         <x-stat-card title="Pengguna Baru Bulan Ini" :stat="$newUserThisWeek">
-                            <div class="p-3 mr-4 text-green-500 bg-green-100 rounded-full ">
+                            <div
+                                class="p-3 mr-4 text-green-500 bg-green-100 rounded-full dark:text-green-100 dark:bg-green-500">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
                                     fill="currentColor">
                                     <path
@@ -33,7 +35,8 @@
                         </x-stat-card>
                         <!-- Card -->
                         <x-stat-card title="Total Buku" :stat="$totalBooks">
-                            <div class="p-3 mr-4 text-blue-500 bg-blue-100 rounded-full ">
+                            <div
+                                class="p-3 mr-4 text-blue-500 bg-blue-100 rounded-full dark:text-blue-100 dark:bg-blue-500">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
                                     fill="currentColor">
                                     <path
@@ -43,7 +46,8 @@
                         </x-stat-card>
                         <!-- Card -->
                         <x-stat-card title="Total Buku Dipinjam" :stat="$borrowedBooks">
-                            <div class="p-3 mr-4 text-teal-500 bg-teal-100 rounded-full ">
+                            <div
+                                class="p-3 mr-4 text-teal-500 bg-teal-100 rounded-full dark:text-teal-100 dark:bg-teal-500">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
                                     fill="currentColor">
                                     <path
@@ -55,8 +59,8 @@
                     </div>
 
                     {{-- Chart --}}
-                    <div class="w-17 sm:w-1/3 p-4 bg-white rounded-lg shadow-xs ">
-                        <h4 class="mb-4 font-semibold text-gray-800 ">
+                    <div class="w-17 sm:w-1/3 p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
+                        <h4 class="mb-4 font-semibold text-gray-800 dark:text-gray-400 text-center">
                             Statistik Pengguna
                         </h4>
                         <canvas id="myChart"></canvas>
@@ -64,19 +68,19 @@
                             <!-- Chart legend -->
                             <div class="flex items-center">
                                 <span class="inline-block w-3 h-3 mr-1 bg-teal-500 rounded-full"></span>
-                                <span>Admin</span>
+                                <span class="dark:text-gray-400">Admin</span>
                             </div>
                             <div class="flex items-center">
                                 <span class="inline-block w-3 h-3 mr-1 bg-blue-600 rounded-full"></span>
-                                <span>Pimpinan</span>
+                                <span class="dark:text-gray-400">Pimpinan</span>
                             </div>
                             <div class="flex items-center">
                                 <span class="inline-block w-3 h-3 mr-1 bg-purple-600 rounded-full"></span>
-                                <span>Operator</span>
+                                <span class="dark:text-gray-400">Operator</span>
                             </div>
                             <div class="flex items-center">
                                 <span class="inline-block w-3 h-3 mr-1 bg-yellow-400 rounded-full"></span>
-                                <span>Anggota</span>
+                                <span class="dark:text-gray-400">Anggota</span>
                             </div>
                         </div>
                     </div>

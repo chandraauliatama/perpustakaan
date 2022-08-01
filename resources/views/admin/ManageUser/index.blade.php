@@ -7,8 +7,8 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 bg-white border-b border-gray-200">
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg dark:bg-gray-800">
+                <div class="p-6 bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-black">
                     <x-button ahref href="{{ route('admin.user.create') }}">{{ __('+ Buat User') }}</x-button>
                     <x-button ahref href="{{ route('admin.printAllUsers') }}" target="_blank">{{ __('Cetak PDF') }}
                     </x-button>
@@ -26,7 +26,7 @@
                             <table class="w-full whitespace-no-wrap">
                                 <thead>
                                     <tr
-                                        class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b bg-gray-50 ">
+                                        class="text-xs font-bold tracking-wide text-left text-gray-500 uppercase border-b bg-gray-50 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-700">
                                         <th class="px-4 py-3">Nama</th>
                                         {{-- <th class="px-4 py-3">Buku Dipinjam</th> --}}
                                         <th class="px-4 py-3">Role</th>
@@ -35,9 +35,9 @@
                                         <th class="px-4 py-3">Aksi</th>
                                     </tr>
                                 </thead>
-                                <tbody class="bg-white divide-y ">
+                                <tbody class="bg-white divide-y dark:bg-gray-800">
                                     @forelse ($users as $user)
-                                        <tr class="text-gray-700 ">
+                                        <tr class="text-gray-700 dark:text-gray-400 dark:border-gray-700">
                                             <td class="px-4 py-3">
                                                 <div class="flex items-center text-sm">
                                                     <!-- Avatar with inset shadow -->
@@ -62,13 +62,13 @@
                                             <td class="px-4 py-3 text-xs">
                                                 @php
                                                     if ($user->role_id == 1) {
-                                                        $color = 'text-green-700 bg-green-100';
+                                                        $color = 'text-green-700 bg-green-100 dark:bg-green-700 dark:text-green-100';
                                                     } elseif ($user->role_id == 2) {
-                                                        $color = 'text-red-700 bg-red-100';
+                                                        $color = 'text-red-700 bg-red-100 dark:text-red-100 dark:bg-red-700';
                                                     } elseif ($user->role_id == 3) {
-                                                        $color = 'text-orange-700 bg-orange-100';
+                                                        $color = 'text-orange-700 bg-orange-100 dark:text-white dark:bg-orange-600';
                                                     } else {
-                                                        $color = 'text-gray-700 bg-gray-100';
+                                                        $color = 'text-gray-700 bg-gray-100 dark:text-gray-100 dark:bg-gray-700';
                                                     }
                                                 @endphp
                                                 <span
@@ -102,7 +102,7 @@
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit"
-                                                            class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-red-500 rounded-lg focus:outline-none focus:shadow-outline-gray"
+                                                            class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-red-600 hover:text-red-900 rounded-lg focus:outline-none focus:shadow-outline-gray"
                                                             aria-label="Delete">
                                                             <svg class="w-5 h-5" aria-hidden="true" fill="currentColor"
                                                                 viewBox="0 0 20 20">
