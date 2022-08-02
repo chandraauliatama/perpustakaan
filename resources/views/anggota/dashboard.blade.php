@@ -63,7 +63,7 @@
                     {{-- Chart --}}
                     @if ($allBook)
                         <div class="w-17 sm:w-1/3 p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
-                            <h4 class="mb-4 font-semibold text-gray-800 text-center">
+                            <h4 class="mb-4 font-semibold text-gray-800 text-center dark:text-gray-400">
                                 Buku Dipinjam
                             </h4>
                             <canvas id="myChart"></canvas>

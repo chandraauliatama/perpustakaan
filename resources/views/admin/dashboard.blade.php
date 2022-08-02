@@ -60,7 +60,7 @@
 
                     {{-- Chart --}}
                     <div class="w-17 sm:w-1/3 p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
-                        <h4 class="mb-4 font-semibold text-gray-800 dark:text-gray-400 text-center">
+                        <h4 class="mb-4 font-semibold text-gray-800 text-center dark:text-gray-400">
                             Statistik Pengguna
                         </h4>
                         <canvas id="myChart"></canvas>

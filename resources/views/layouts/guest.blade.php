@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" {{ config('app.tailwind_display_mode') }}>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 
 <head>
@@ -21,5 +21,50 @@
         {{ $slot }}
     </div>
 </body>
+
+<script>
+    function hiddenSwitch(what, arr) {
+        for (let i = 0; i < arr.length; i++) {
+            let svgButton = document.getElementById(arr[i]).classList
+            what == "add" ? svgButton.add("hidden") : svgButton.remove("hidden")
+        }
+    }
+
+    const toggleDark = () => {
+        hiddenSwitch("remove", ["lightButton", "mobileLightButton"])
+        hiddenSwitch("add", ["darkButton", "mobileDarkButton"])
+    }
+
+    const toggleLight = () => {
+        hiddenSwitch("remove", ["darkButton", "mobileDarkButton"])
+        hiddenSwitch("add", ["lightButton", "mobileLightButton"])
+    }
+
+    const userTheme = localStorage.getItem("theme")
+    const systemTheme = window.matchMedia("(prefers-colors-scheme: dark)").matches
+
+    const themeCheck = () => {
+        if (userTheme == "dark" || (!userTheme && systemTheme)) {
+            document.documentElement.classList.add("dark")
+            toggleDark()
+            return
+        }
+        toggleLight()
+    }
+
+    const themeSwitch = () => {
+        if (document.documentElement.classList.contains("dark")) {
+            document.documentElement.classList.remove("dark")
+            localStorage.setItem("theme", "light")
+            toggleLight()
+            return
+        }
+        document.documentElement.classList.add("dark");
+        localStorage.setItem("theme", "dark")
+        toggleDark()
+    }
+
+    themeCheck()
+</script>
 
 </html>
