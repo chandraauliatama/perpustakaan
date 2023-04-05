@@ -31,9 +31,9 @@ class BorrowBookController extends Controller
         $rules = LibraryRules::first();
         $request->user()->books()->attach(
             $book->id, [
-            'status' => 'ASK TO BORROW',
-            'return_limit' => Carbon::now()->addDays($rules->day_limit),
-            'fine' => $rules->fine,
+                'status' => 'ASK TO BORROW',
+                'return_limit' => Carbon::now()->addDays($rules->day_limit),
+                'fine' => $rules->fine,
             ]
         );
 
