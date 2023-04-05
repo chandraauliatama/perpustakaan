@@ -27,7 +27,6 @@
                                     <tr
                                         class="text-xs font-bold tracking-wide text-left text-gray-500 uppercase border-b bg-gray-50 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-700">
                                         <th class="px-4 py-3">Judul</th>
-                                        {{-- <th class="px-4 py-3">Buku Dipinjam</th> --}}
                                         <th class="px-4 py-3">Penulis</th>
                                         <th class="px-4 py-3">Nama</th>
                                         <th class="px-4 py-3">Tanggal Kembali</th>
@@ -61,15 +60,7 @@
                                                 {{ $status[$borrow->status] }}
                                             </td>
                                             <td class="px-4 py-3 text-sm">
-                                                @php
-                                                    $fine = \Carbon\Carbon::create($borrow->return_limit);
-                                                    if (\Carbon\Carbon::now() > $fine && $borrow->status == 'ON LOAN') {
-                                                        echo $fine->diffInDays() * $borrow->fine;
-                                                    } else {
-                                                        echo 0;
-                                                    }
-                                                    
-                                                @endphp
+                                                {{ calculatingFines($borrow) }}
                                             </td>
                                         </tr>
                                     @endforeach

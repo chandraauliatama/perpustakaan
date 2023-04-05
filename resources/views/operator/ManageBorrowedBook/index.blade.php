@@ -1,14 +1,14 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl leading-tight">
+        <h2 class="text-xl font-semibold leading-tight">
             {{ __('Semua Buku') }}
         </h2>
     </x-slot>
 
     <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg dark:bg-gray-800">
-                <div class="p-6 bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-black">
+        <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
+            <div class="overflow-hidden bg-white shadow-sm dark:bg-gray-800 sm:rounded-lg">
+                <div class="border-b border-gray-200 bg-white p-6 dark:border-black dark:bg-gray-800">
                     {{-- Print Button --}}
                     <x-button ahref href="{{ route('operator.printAllBooks') }}" target="_blank">{{ __('Cetak Laporan') }}
                     </x-button>
@@ -23,12 +23,12 @@
                     @if (session('status') || session('delete'))
                         <x-session-message></x-session-message>
                     @endif
-                    <div class="w-full mt-3 overflow-hidden rounded-lg shadow-xs">
+                    <div class="shadow-xs mt-3 w-full overflow-hidden rounded-lg">
                         <div class="w-full overflow-x-auto">
-                            <table class="w-full whitespace-no-wrap">
+                            <table class="whitespace-no-wrap w-full">
                                 <thead>
                                     <tr
-                                        class="text-xs font-bold tracking-wide text-left text-gray-500 uppercase border-b bg-gray-50 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-700">
+                                        class="border-b bg-gray-50 text-left text-xs font-bold uppercase tracking-wide text-gray-500 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400">
                                         <th class="px-4 py-3">Judul</th>
                                         {{-- <th class="px-4 py-3">Buku Dipinjam</th> --}}
                                         <th class="px-4 py-3">Nama</th>
@@ -38,9 +38,9 @@
                                         <th class="px-4 py-3">Aksi</th>
                                     </tr>
                                 </thead>
-                                <tbody class="bg-white divide-y dark:bg-gray-800">
+                                <tbody class="divide-y bg-white dark:bg-gray-800">
                                     @foreach ($borrows as $borrow)
-                                        <tr class="text-gray-700 dark:text-gray-400 dark:border-gray-700">
+                                        <tr class="text-gray-700 dark:border-gray-700 dark:text-gray-400">
                                             <td class="px-4 py-3">
                                                 <div class="flex items-center text-sm">
                                                     <!-- Avatar with inset shadow -->
@@ -53,7 +53,7 @@
                                                 </div> --}}
                                                     <div>
                                                         <p class="font-semibold">{{ $borrow->book->title }}</p>
-                                                        <p class="text-xs text-gray-600 ">
+                                                        <p class="text-xs text-gray-600">
                                                             {{-- 10x Developer --}}
                                                         </p>
                                                     </div>
@@ -72,21 +72,14 @@
                                                 {{ $status[$borrow->status] }}
                                             </td>
                                             <td class="px-4 py-3 text-sm">
-                                                @php
-                                                    $fine = \Carbon\Carbon::create($borrow->return_limit);
-                                                    if (now() > $fine && $borrow->status == 'ON LOAN') {
-                                                        echo $fine->diffInDays() * $borrow->fine;
-                                                    } else {
-                                                        echo 0;
-                                                    }
-                                                @endphp
+                                                {{ calculatingFines($borrow) }}
                                             </td>
                                             <td class="px-4 py-3">
                                                 <div class="flex items-center space-x-4 text-sm">
                                                     @if ($borrow->status == 'ASK TO BORROW')
                                                         <a href="{{ route('operator.borrowed.edit', $borrow->id) }}">
                                                             <span
-                                                                class="px-2 py-1 text-sm font-medium leading-5 text-white transition-colors duration-150  bg-green-600 border border-transparent rounded-full active:bg-green-600 hover:bg-green-700 focus:outline-none focus:shadow-outline-green">
+                                                                class="focus:shadow-outline-red rounded-full border border-green-400 bg-green-200 px-2 py-1 text-sm font-bold leading-5 text-green-700 transition-colors duration-150 hover:bg-green-500 hover:text-green-50 focus:outline-none active:bg-green-600 dark:border-transparent dark:bg-green-600 dark:text-white dark:hover:bg-green-800">
                                                                 Setujui
                                                             </span>
                                                         </a>
@@ -97,7 +90,7 @@
                                                                 @csrf
                                                                 @method('DELETE')
                                                                 <span
-                                                                    class="px-2 py-1 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-red-600 border border-transparent rounded-full active:bg-red-600 hover:bg-red-700 focus:outline-none focus:shadow-outline-red">
+                                                                    class="focus:shadow-outline-red rounded-full border border-red-400 bg-red-200 px-2 py-1 text-sm font-bold leading-5 text-red-700 transition-colors duration-150 hover:bg-red-500 hover:text-red-50 focus:outline-none active:bg-red-600 dark:border-transparent dark:bg-red-600 dark:text-white dark:hover:bg-red-800">
                                                                     Tolak
                                                                 </span>
                                                             </button>
@@ -110,7 +103,7 @@
                                                                 @csrf
                                                                 @method('DELETE')
                                                                 <span
-                                                                    class="px-2 py-1 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-red-600 border border-transparent rounded-full active:bg-red-600 hover:bg-red-700 focus:outline-none focus:shadow-outline-red">
+                                                                    class="focus:shadow-outline-red rounded-full border border-red-400 bg-red-200 px-2 py-1 text-sm font-bold leading-5 text-red-700 transition-colors duration-150 hover:bg-red-500 hover:text-red-50 focus:outline-none active:bg-red-600 dark:border-transparent dark:bg-red-600 dark:text-white dark:hover:bg-red-800">
                                                                     Hapus Data
                                                                 </span>
                                                             </button>
@@ -123,14 +116,12 @@
                                                                 @csrf
                                                                 @method('PUT')
                                                                 <span
-                                                                    class="px-2 py-1 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-blue-600 border border-transparent  rounded-full active:bg-blue-600 hover:bg-blue-700 focus:outline-none focus:shadow-outline-blue">
+                                                                    class="focus:shadow-outline-blue rounded-full border border-blue-400 bg-blue-200 px-2 py-1 text-sm font-bold leading-5 text-blue-700 transition-colors duration-150 hover:bg-blue-500 hover:text-blue-50 focus:outline-none active:bg-blue-600 dark:border-transparent dark:bg-blue-600 dark:text-white dark:hover:bg-blue-800">
                                                                     Kembalikan
                                                                 </span>
                                                             </button>
                                                         </form>
                                                     @endif
-
-
                                                 </div>
                                             </td>
                                         </tr>

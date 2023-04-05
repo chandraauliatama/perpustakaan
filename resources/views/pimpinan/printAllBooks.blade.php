@@ -38,7 +38,6 @@
                                      <tr
                                          class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b bg-gray-50 ">
                                          <th class="px-4 py-3">Judul</th>
-                                         {{-- <th class="px-4 py-3">Buku Dipinjam</th> --}}
                                          <th class="px-4 py-3">Penulis</th>
                                          <th class="px-4 py-3">Penerbit</th>
                                          <th class="px-4 py-3">Tahun Terbit</th>
@@ -51,25 +50,13 @@
                                          <tr class="text-gray-700 ">
                                              <td class="px-4 py-3">
                                                  <div class="flex items-center text-sm">
-                                                     <!-- Avatar with inset shadow -->
-                                                     {{-- <div class="relative hidden w-8 h-8 mr-3 rounded-full md:block">
-                                                    <img class="object-cover w-full h-full rounded-full"
-                                                        src="https://images.unsplash.com/flagged/photo-1570612861542-284f4c12e75f?ixlib=rb-1.2.1&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=200&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjE3Nzg0fQ"
-                                                        alt="" loading="lazy">
-                                                    <div class="absolute inset-0 rounded-full shadow-inner"
-                                                        aria-hidden="true"></div>
-                                                </div> --}}
                                                      <div>
                                                          <p class="font-semibold">{{ $book->title }}</p>
                                                          <p class="text-xs text-gray-600 ">
-                                                             {{-- 10x Developer --}}
                                                          </p>
                                                      </div>
                                                  </div>
                                              </td>
-                                             {{-- <td class="px-4 py-3 text-sm">
-                                                $ 863.45
-                                            </td> --}}
                                              <td class="px-4 py-3 text-sm">
                                                  {{ $book->author }}
                                              </td>
@@ -83,15 +70,7 @@
                                                  {{ $book->stock }}
                                              </td>
                                              <td class="px-4 py-3 text-sm">
-                                                 @php
-                                                     $qrcode = base64_encode(
-                                                         \QrCode::format('svg')
-                                                             ->size(200)
-                                                             ->errorCorrection('H')
-                                                             ->generate(str_replace(' ', '+', $book->title)),
-                                                     );
-                                                 @endphp
-                                                 <img src="data:image/png;base64, {!! $qrcode !!}">
+                                                 <img src="data:image/png;base64, {!! createQRCodeBook($book->title) !!}">
                                              </td>
                                          </tr>
                                      @endforeach
